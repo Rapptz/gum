@@ -30,12 +30,36 @@ template<typename Deleter>
 struct basic_surface {
 private:
     std::unique_ptr<SDL_Surface, Deleter> surface;
+    template<typename T> friend class basic_surface;
 public:
     basic_surface() = default;
     basic_surface(SDL_Surface* surface): surface(surface) {}
+    basic_surface(const std::string& bmp_filename) {
+        load_bmp(bmp_filename);
+    }
 
     void fill(const color& c) {
         SDL_FillRect(surface.get(), nullptr, SDL_MapRGBA(surface->format, c.r, c.g, c.b, c.a));
+    }
+
+    void load_bmp(const std::string& filename) {
+        surface.reset(SDL_LoadBMP(filename.c_str()));
+
+        if(surface == nullptr) {
+            throw error("Failed to load Bitmap " + filename + std::string("\nMore information: ") + SDL_GetError());
+        }
+    }
+
+    template<typename OtherDeleter>
+    void blit(const basic_surface<OtherDeleter>& to) {
+        auto status = SDL_BlitSurface(to.surface.get(), nullptr, surface.get(), nullptr);
+        if(status < 0) {
+            throw error();
+        }
+    }
+
+    bool is_valid() const noexcept {
+        return surface != nullptr;
     }
 };
 

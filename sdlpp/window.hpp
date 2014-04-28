@@ -62,6 +62,11 @@ public:
         surf.fill(c);
     }
 
+    template<typename Deleter>
+    void display(const basic_surface<Deleter>& s) {
+        surf.blit(s);
+    }
+
     void update() {
         SDL_UpdateWindowSurface(data.get());
     }
