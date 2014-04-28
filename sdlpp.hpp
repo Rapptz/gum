@@ -23,4 +23,10 @@
 #include "sdlpp/init.hpp"
 #include "sdlpp/window.hpp"
 
+namespace sdl {
+inline auto delay(unsigned ms) -> decltype(SDL_Decay(ms)) {
+    return SDL_Decay(ms);
+}
+} // sdl
+
 #endif // SDLPP_HPP
