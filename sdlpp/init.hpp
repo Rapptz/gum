@@ -20,7 +20,7 @@
 #ifndef SDLPP_INIT_HPP
 #define SDLPP_INIT_HPP
 
-#include <SDL.h>
+#include "error.hpp"
 
 namespace sdl {
 /**
@@ -64,8 +64,10 @@ public:
      *
      * @param f flag to initialise SDL with
      */
-    init(flags f = flags::everything) noexcept {
-        SDL_Init(static_cast<int>(f));
+    init(flags f = flags::everything) {
+        if(SDL_Init(static_cast<int>(f)) < 0) {
+            throw error();
+        }
     }
 
     /**
@@ -98,8 +100,10 @@ public:
      *
      * @param f flag to initialise the subsystem.
      */
-    void start(flags f) const noexcept {
-        SDL_InitSubSystem(static_cast<int>(f));
+    void start(flags f) const {
+        if(SDL_InitSubSystem(static_cast<int>(f)) < 0) {
+            throw error();
+        }
     }
 
     /**
