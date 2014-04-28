@@ -35,7 +35,7 @@ public:
     basic_surface(SDL_Surface* surface): surface(surface) {}
 
     void fill(const color& c) {
-        SDL_FillRect(surface.get(), nullptr, SDL_MapRGBA(surface->format, c.r, c.g, c.b));
+        SDL_FillRect(surface.get(), nullptr, SDL_MapRGBA(surface->format, c.r, c.g, c.b, c.a));
     }
 };
 

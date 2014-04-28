@@ -21,5 +21,6 @@
 #define SDLPP_HPP
 
 #include "sdlpp/init.hpp"
+#include "sdlpp/window.hpp"
 
 #endif // SDLPP_HPP
