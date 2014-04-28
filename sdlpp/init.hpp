@@ -21,6 +21,7 @@
 #define SDLPP_INIT_HPP
 
 #include "error.hpp"
+#include <SDL.h>
 
 namespace sdl {
 /**

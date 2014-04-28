@@ -20,7 +20,7 @@
 #ifndef SDLPP_ERROR_HPP
 #define SDLPP_ERROR_HPP
 
-#include <SDL.h>
+#include <SDL_error.h>
 #include <stdexcept>
 
 namespace sdl {
