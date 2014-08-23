@@ -30,23 +30,37 @@ namespace sdl {
  * the SDL++ API.
  */
 struct color {
-    uint8_t r = 0;
-    uint8_t g = 0;
-    uint8_t b = 0;
-    uint8_t a = 255;
+    uint8_t r = 0;      ///< The red colour.
+    uint8_t g = 0;      ///< The green colour.
+    uint8_t b = 0;      ///< The blue colour.
+    uint8_t a = 255;    ///< The alpha setting. 0 is transparent, 255 isn't.
 
+    /**
+     * @brief Constructs the default colour, which is black.
+     */
     color() = default;
+
+    /**
+     * @brief Constructs the colour from red, green, or blue.
+     * @details Constructs the colour from red, green, or blue.
+     * The numbers provided must be between 0 and 255.
+     *
+     * @param r The red colour.
+     * @param g The green colour.
+     * @param b The blue colour.
+     * @param a The alpha setting, used for transparency.
+     */
     color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255): r(r), g(g), b(b), a(a) {}
 
-    static const color red;
-    static const color green;
-    static const color blue;
-    static const color black;
-    static const color white;
-    static const color transparent;
-    static const color yellow;
-    static const color magenta;
-    static const color cyan;
+    static const color red;         ///< An instance of the colour red.
+    static const color green;       ///< An instance of the colour green.
+    static const color blue;        ///< An instance of the colour blue.
+    static const color black;       ///< An instance of the colour black.
+    static const color white;       ///< An instance of the colour white.
+    static const color transparent; ///< An instance of a transparent colour.
+    static const color yellow;      ///< An instance of the colour yellow.
+    static const color magenta;     ///< An instance of the colour magenta.
+    static const color cyan;        ///< An instance of the colour cyan.
 };
 
 const color color::red         = { 255, 0, 0, 255 };
