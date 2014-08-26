@@ -46,7 +46,9 @@ public:
         surface.reset(SDL_LoadBMP(filename.c_str()));
 
         if(surface == nullptr) {
-            throw error("Failed to load Bitmap " + filename + std::string("\nMore information: ") + SDL_GetError());
+            std::string&& err = "Failed to load Bitmap " + filename + std::string("\nMore information: ") + SDL_GetError();
+            SDL_ClearError();
+            throw error(std::move(err));
         }
     }
 
