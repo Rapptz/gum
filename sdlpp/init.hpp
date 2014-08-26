@@ -29,10 +29,10 @@ namespace sdl {
  * @details Wraps the call of SDL_Init with the
  * corresponding SDL_Quit so you don't forget.
  *
- *  Defines all the SDL_INIT_* flags through an
- *  enum as well.
+ * Defines all the SDL_INIT_* flags through an
+ * enum as well.
  *
- *  Just like SDL_Init it should only be called once.
+ * Just like SDL_Init it should only be called once.
  */
 struct init {
 private:

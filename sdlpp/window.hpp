@@ -62,6 +62,10 @@ public:
         surf.fill(c);
     }
 
+    void close() {
+        data.reset(nullptr);
+    }
+
     template<typename Deleter>
     void display(const basic_surface<Deleter>& s) {
         surf.blit(s);
