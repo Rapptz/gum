@@ -23,30 +23,63 @@
 #include "surface.hpp"
 #include <SDL_video.h>
 #include <string>
+#include <cstdint>
 
 namespace sdl {
+/**
+ * @brief A window that could be drawn to.
+ * @details This struct is a wrapper around `SDL_Window` that
+ * allows for easier construction and a more object oriented way
+ * of retrieving and setting its properties.
+ */
 struct window {
 private:
+    friend struct renderer;
     std::unique_ptr<SDL_Window, decltype(SDL_DestroyWindow)*> data;
     surface_view surf;
 public:
-    static const auto npos = SDL_WINDOWPOS_UNDEFINED;
-    enum flags {
-        fullscreen         = SDL_WINDOW_FULLSCREEN,
-        fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
-        opengl             = SDL_WINDOW_OPENGL,
-        shown              = SDL_WINDOW_SHOWN,
-        hidden             = SDL_WINDOW_HIDDEN,
-        borderless         = SDL_WINDOW_BORDERLESS,
-        resizable          = SDL_WINDOW_RESIZABLE,
-        minimized          = SDL_WINDOW_MINIMIZED,
-        maximized          = SDL_WINDOW_MAXIMIZED,
-        input_grabbed      = SDL_WINDOW_INPUT_GRABBED,
-        highdpi            = SDL_WINDOW_ALLOW_HIGHDPI
+    static const auto npos     = SDL_WINDOWPOS_UNDEFINED;       ///< Represents an undefined window position.
+    static const auto centered = SDL_WINDOWPOS_CENTERED;        ///< Represents a centered window position.
+
+    /**
+     * @brief Flags used to initialise the window with.
+     * @details The flags are pretty similar to the ones provided
+     * by the all-caps SDL version. The difference is it's made
+     * to lower case and `snake_case`. Examples:
+     *
+     * - `SDL_WINDOW_FULLSCREEN` -> `sdl::window::fullscreen`.
+     * - `SDL_WINDOW_INPUT_GRABBED` -> `sdl::window::input_grabbed`.
+     *
+     * Just like regular SDL, you can use bitwise OR to combine flags
+     * together. Since `SDL_WINDOW_SHOWN` is ignored by `SDL_CreateWindow`
+     * it is not available in this enum nor should it be used.
+     */
+    enum flags : uint32_t {
+        fullscreen         = SDL_WINDOW_FULLSCREEN,           ///< A fullscreen window.
+        fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,   ///< A fullscreen window at desktop resolution.
+        opengl             = SDL_WINDOW_OPENGL,               ///< A window usable with OpenGL.
+        hidden             = SDL_WINDOW_HIDDEN,               ///< A window that is not visible.
+        borderless         = SDL_WINDOW_BORDERLESS,           ///< A borderless window.
+        resizable          = SDL_WINDOW_RESIZABLE,            ///< A window that can be resized.
+        minimized          = SDL_WINDOW_MINIMIZED,            ///< A window that starts out minimised.
+        maximized          = SDL_WINDOW_MAXIMIZED,            ///< A window that starts out maximised.
+        input_grabbed      = SDL_WINDOW_INPUT_GRABBED,        ///< A window that grabs all input focus.
+        highdpi            = SDL_WINDOW_ALLOW_HIGHDPI         ///< A window that supports high-DPI if available.
     };
 
-    window(const std::string& title, int width, int height, flags f = flags::shown):
-    data(SDL_CreateWindow(title.c_str(), npos, npos, width, height, static_cast<int>(f)), SDL_DestroyWindow) {
+    /**
+     * @brief Creates the window.
+     * @details The window is created as if calling `SDL_CreateWindow` with
+     * no position specified. If the window cannot be created, then an error is
+     * thrown.
+     *
+     * @param title The title string of the window.
+     * @param width The width of the window.
+     * @param height The height of the window.
+     * @param f The flags to pass to initialisation of the window.
+     */
+    window(const std::string& title, int width, int height, uint32_t f = flags::shown):
+    data(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f), SDL_DestroyWindow) {
         if(data == nullptr) {
             throw error();
         }
@@ -54,14 +87,23 @@ public:
         surf = surface_view(SDL_GetWindowSurface(data.get()));
     }
 
+    /**
+     * @brief Checks if the window is currently open.
+     */
     bool is_open() const noexcept {
         return data != nullptr;
     }
 
+    /**
+     * @brief Fills the window with a colour.
+     */
     void fill(const color& c) {
         surf.fill(c);
     }
 
+    /**
+     * @brief Closes the window.
+     */
     void close() {
         data.reset(nullptr);
     }
@@ -71,6 +113,11 @@ public:
         surf.blit(s);
     }
 
+    /**
+     * @brief Updates the window surface.
+     * @details This function is equivalent to calling
+     * `SDL_UpdateWindowSurface`.
+     */
     void update() {
         SDL_UpdateWindowSurface(data.get());
     }

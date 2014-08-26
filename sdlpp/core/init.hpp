@@ -46,7 +46,7 @@ public:
      * the same as the ones from SDL except turned lower case and in
      * snake_case.
      */
-    enum flags : int {
+    enum flags : uint32_t {
         timer           = SDL_INIT_TIMER,           ///< Initialises the timer subsystem
         audio           = SDL_INIT_AUDIO,           ///< Initialises the audio subsystem
         video           = SDL_INIT_VIDEO,           ///< Initialises the video subsystem
@@ -71,7 +71,7 @@ public:
      *
      * @param subsystems The subsystems to initialise SDL with
      */
-    init(int subsystems = flags::video) {
+    init(uint32_t subsystems = flags::video) {
         if(SDL_Init(subsystems) < 0) {
             throw error();
         }
@@ -102,7 +102,7 @@ public:
      *
      * @param subsystem The subsystem to quit
      */
-    void quit(int subsystem) noexcept {
+    void quit(uint32_t subsystem) noexcept {
         if(was_initialised(subsystem)) {
             SDL_QuitSubSystem(subsystem);
         }
@@ -115,7 +115,7 @@ public:
      *
      * @param subsystem The subsystem to initialise.
      */
-    void start(int subsystem) const {
+    void start(uint32_t subsystem) const {
         if(SDL_InitSubSystem(subsystem) < 0) {
             throw error();
         }
@@ -127,7 +127,7 @@ public:
      * @param subsystem The subsystem to check initialisation of.
      * @return `true` if initialised, `false` otherwise.
      */
-    bool was_initialised(int subsystem = flags::video) const noexcept {
+    bool was_initialised(uint32_t subsystem = flags::video) const noexcept {
         return SDL_WasInit(subsystem);
     }
 };
