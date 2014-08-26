@@ -22,6 +22,7 @@
 
 #include "core/error.hpp"
 #include "core/init.hpp"
+#include "core/version.hpp"
 
 namespace sdl {
 /**
