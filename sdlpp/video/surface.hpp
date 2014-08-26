@@ -17,10 +17,10 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_SURFACE_HPP
-#define SDLPP_SURFACE_HPP
+#ifndef SDLPP_VIDEO_SURFACE_HPP
+#define SDLPP_VIDEO_SURFACE_HPP
 
-#include "error.hpp"
+#include "../core/error.hpp"
 #include "color.hpp"
 #include <SDL_surface.h>
 #include <memory>
@@ -78,4 +78,4 @@ using surface      = basic_surface<surface_deleter>;
 using surface_view = basic_surface<surface_viewer>;
 } // sdl
 
-#endif // SDLPP_SURFACE_HPP
+#endif // SDLPP_VIDEO_SURFACE_HPP

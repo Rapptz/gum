@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_WINDOW_HPP
-#define SDLPP_WINDOW_HPP
+#ifndef SDLPP_VIDEO_WINDOW_HPP
+#define SDLPP_VIDEO_WINDOW_HPP
 
 #include "surface.hpp"
 #include <SDL_video.h>
@@ -77,4 +77,4 @@ public:
 };
 } // sdl
 
-#endif // SDLPP_WINDOW_HPP
+#endif // SDLPP_VIDEO_WINDOW_HPP

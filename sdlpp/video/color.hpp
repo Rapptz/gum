@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_COLOR_HPP
-#define SDLPP_COLOR_HPP
+#ifndef SDLPP_VIDEO_COLOR_HPP
+#define SDLPP_VIDEO_COLOR_HPP
 
 #include <SDL_pixels.h>
 #include <cstdint>
@@ -76,4 +76,4 @@ const color color::cyan        = { 0, 255, 255, 255 };
 using colour = color;
 } // sdl
 
-#endif // SDLPP_COLOR_HPP
+#endif // SDLPP_VIDEO_COLOR_HPP

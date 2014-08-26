@@ -17,16 +17,11 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_HPP
-#define SDLPP_HPP
+#ifndef SDLPP_VIDEO_HPP
+#define SDLPP_VIDEO_HPP
 
-#include "sdlpp/init.hpp"
-#include "sdlpp/window.hpp"
+#include "video/color.hpp"
+#include "video/surface.hpp"
+#include "video/window.hpp"
 
-namespace sdl {
-inline auto delay(unsigned ms) -> decltype(SDL_Delay(ms)) {
-    return SDL_Delay(ms);
-}
-} // sdl
-
-#endif // SDLPP_HPP
+#endif // SDLPP_VIDEO_HPP
