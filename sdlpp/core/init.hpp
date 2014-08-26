@@ -38,16 +38,23 @@ struct init {
 private:
     bool has_quit = false;
 public:
+    /**
+     * @brief Flags that specify what subsystem to initialise.
+     * @details These flags should be `OR`'d together to initialise
+     * multiple subsystems. e.g. `sdl::init::timer | sdl::init::audio`
+     * to initialise the timer and audio subsystems. The flags are
+     * the same as the ones from SDL except turned lower case and in
+     * snake_case.
+     */
     enum flags : int {
-        timer           = SDL_INIT_TIMER,
-        audio           = SDL_INIT_AUDIO,
-        video           = SDL_INIT_VIDEO,
-        joystick        = SDL_INIT_JOYSTICK,
-        haptic          = SDL_INIT_HAPTIC,
-        game_controller = SDL_INIT_GAMECONTROLLER,
-        events          = SDL_INIT_EVENTS,
-        no_parachute    = SDL_INIT_NOPARACHUTE,
-        everything      = SDL_INIT_EVERYTHING
+        timer           = SDL_INIT_TIMER,           ///< Initialises the timer subsystem
+        audio           = SDL_INIT_AUDIO,           ///< Initialises the audio subsystem
+        video           = SDL_INIT_VIDEO,           ///< Initialises the video subsystem
+        joystick        = SDL_INIT_JOYSTICK,        ///< Initialises the joystick subsystem
+        haptic          = SDL_INIT_HAPTIC,          ///< Initialises the force feedback subsystem
+        game_controller = SDL_INIT_GAMECONTROLLER,  ///< Initialises the game controller subsystem
+        events          = SDL_INIT_EVENTS,          ///< Initialises the events subsystem
+        everything      = SDL_INIT_EVERYTHING       ///< Initialises every subsystem
     };
 
     init(const init&) = delete;
@@ -57,18 +64,25 @@ public:
 
     /**
      * @brief Initialises SDL
-     * @details Initialises SDL with the flags given.
-     * The enum of flags translate one to one with snake_case.
-     * e.g.
-     * - SDL_INIT_TIMER -> sdl::init::timer
-     * - SDL_INIT_GAMECONTROLLER -> sdl::init::game_controller
+     * @details Initialises SDL with the flags given. By default,
+     * it just initialises the video subsystem. `SDL_Init` also
+     * initialises the File I/O, Threading, and Event Handling
+     * subsystems.
      *
-     * @param f flag to initialise SDL with
+     * @param subsystems The subsystems to initialise SDL with
      */
-    init(flags f = flags::everything) {
-        if(SDL_Init(static_cast<int>(f)) < 0) {
+    init(int subsystems = flags::video) {
+        if(SDL_Init(subsystems) < 0) {
             throw error();
         }
+    }
+
+    /**
+     * @brief The destructor.
+     * @details Calls `SDL_Quit` internally to quit all the subsystems.
+     */
+    ~init() {
+        quit();
     }
 
     /**
@@ -86,11 +100,11 @@ public:
     /**
      * @brief Quits a given subsystem.
      *
-     * @param f subsystem to quit
+     * @param subsystem The subsystem to quit
      */
-    void quit(flags f) noexcept {
-        if(was_initialised(f)) {
-            SDL_QuitSubSystem(static_cast<int>(f));
+    void quit(int subsystem) noexcept {
+        if(was_initialised(subsystem)) {
+            SDL_QuitSubSystem(subsystem);
         }
     }
 
@@ -99,10 +113,10 @@ public:
      * @details Initialises a subsystem by the given
      * flag.
      *
-     * @param f flag to initialise the subsystem.
+     * @param subsystem The subsystem to initialise.
      */
-    void start(flags f) const {
-        if(SDL_InitSubSystem(static_cast<int>(f)) < 0) {
+    void start(int subsystem) const {
+        if(SDL_InitSubSystem(subsystem) < 0) {
             throw error();
         }
     }
@@ -110,15 +124,11 @@ public:
     /**
      * @brief Checks if a subsystem was initialised
      *
-     * @param f flag to check initialisation of
-     * @return `true` if initialised, `false` otherwise
+     * @param subsystem The subsystem to check initialisation of.
+     * @return `true` if initialised, `false` otherwise.
      */
-    bool was_initialised(flags f = flags::everything) const noexcept {
-        return SDL_WasInit(static_cast<int>(f));
-    }
-
-    ~init() {
-        quit();
+    bool was_initialised(int subsystem = flags::video) const noexcept {
+        return SDL_WasInit(subsystem);
     }
 };
 } // sdl
