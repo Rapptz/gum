@@ -34,8 +34,7 @@ namespace sdl {
  */
 struct window {
 private:
-    friend struct renderer;
-    std::unique_ptr<SDL_Window, decltype(SDL_DestroyWindow)*> data;
+    std::unique_ptr<SDL_Window, decltype(SDL_DestroyWindow)*> ptr;
     surface_view surf;
 public:
     static const auto npos     = SDL_WINDOWPOS_UNDEFINED;       ///< Represents an undefined window position.
@@ -78,20 +77,20 @@ public:
      * @param height The height of the window.
      * @param f The flags to pass to initialisation of the window.
      */
-    window(const std::string& title, int width, int height, uint32_t f = flags::shown):
-    data(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f), SDL_DestroyWindow) {
-        if(data == nullptr) {
+    window(const std::string& title, int width, int height, uint32_t f = 0):
+    ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f), SDL_DestroyWindow) {
+        if(ptr == nullptr) {
             throw error();
         }
 
-        surf = surface_view(SDL_GetWindowSurface(data.get()));
+        surf = surface_view(SDL_GetWindowSurface(ptr.get()));
     }
 
     /**
      * @brief Checks if the window is currently open.
      */
     bool is_open() const noexcept {
-        return data != nullptr;
+        return ptr != nullptr;
     }
 
     /**
@@ -102,10 +101,22 @@ public:
     }
 
     /**
+     * @brief Returns the internal SDL_Window pointer.
+     * @details This pointer should be considered a 'view'.
+     * There is no way to retrieve ownership of the window's `SDL_Window`
+     * pointer. As a result, calling `SDL_DestroyWindow` on this pointer
+     * is not advised at all.
+     * @return The internal `SDL_Window` pointer.
+     */
+    SDL_Window* data() const noexcept {
+        return ptr;
+    }
+
+    /**
      * @brief Closes the window.
      */
     void close() {
-        data.reset(nullptr);
+        ptr.reset(nullptr);
     }
 
     template<typename Deleter>
@@ -119,7 +130,7 @@ public:
      * `SDL_UpdateWindowSurface`.
      */
     void update() {
-        SDL_UpdateWindowSurface(data.get());
+        SDL_UpdateWindowSurface(ptr.get());
     }
 };
 } // sdl
