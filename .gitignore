@@ -2,3 +2,4 @@
 dev*
 *.bmp
 *.sublime*
+docs/_*

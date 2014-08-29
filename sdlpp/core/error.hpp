@@ -24,23 +24,16 @@
 #include <stdexcept>
 
 namespace sdl {
-/**
- * @brief Exception object that handles SDL errors.
- * @details The exception object either propagates
- * `SDL_GetError` or uses a custom string. All error
- * handling is thrown through this object.
- */
+inline std::string last_error() noexcept {
+    const char* result = SDL_GetError();
+    SDL_ClearError();
+    return result;
+}
+
 class error : public std::runtime_error {
 public:
-    /**
-     * @brief Creates an exception with `SDL_GetError`
-     */
-    error() noexcept: std::runtime_error(SDL_GetError()) { SDL_ClearError(); }
-
-    /**
-     * @brief Creates an exception with a custom string.
-     */
-    error(const std::string& str) noexcept: std::runtime_error(str) {}
+    error(): std::runtime_error(last_error()) {}
+    error(const std::string& str): std::runtime_error(str) {}
 };
 } // sdl
 

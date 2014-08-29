@@ -20,7 +20,7 @@
 #ifndef SDLPP_VIDEO_HPP
 #define SDLPP_VIDEO_HPP
 
-#include "video/color.hpp"
+#include "video/colour.hpp"
 #include "video/surface.hpp"
 #include "video/window.hpp"
 

@@ -21,7 +21,7 @@
 #define SDLPP_VIDEO_SURFACE_HPP
 
 #include "../core/error.hpp"
-#include "color.hpp"
+#include "colour.hpp"
 #include <SDL_surface.h>
 #include <memory>
 

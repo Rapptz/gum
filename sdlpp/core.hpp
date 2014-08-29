@@ -25,13 +25,6 @@
 #include "core/version.hpp"
 
 namespace sdl {
-/**
- * @brief Delays for a specified number of milliseconds.
- * @details This function internally calls `SDL_Delay`. So all
- * its cons and pros are the same as `SDL_Delay`.
- *
- * @param ms The number of milliseconds to pause by.
- */
 inline void delay(unsigned ms) {
     SDL_Delay(ms);
 }
