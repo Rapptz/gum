@@ -1,6 +1,6 @@
-.. _sdlpp-core-init:
 .. default-domain:: cpp
 .. highlight:: cpp
+.. _sdlpp-core-init:
 
 Initialisation
 ===============

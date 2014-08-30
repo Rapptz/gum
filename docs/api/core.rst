@@ -1,6 +1,7 @@
-.. _sdlpp-core:
 .. default-domain:: cpp
 .. highlight:: cpp
+
+.. _sdlpp-core:
 
 SDL++ Core
 =============

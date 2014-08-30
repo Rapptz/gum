@@ -1,6 +1,6 @@
-.. _sdlpp-core-error:
 .. default-domain:: cpp
 .. highlight:: cpp
+.. _sdlpp-core-error:
 
 Error Handling
 =================

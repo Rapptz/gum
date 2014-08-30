@@ -1,6 +1,6 @@
-.. _sdlpp-video-window:
 .. default-domain:: cpp
 .. highlight:: cpp
+.. _sdlpp-video-window:
 
 Window Management
 ===================

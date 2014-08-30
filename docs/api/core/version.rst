@@ -1,6 +1,6 @@
-.. _sdlpp-core-version:
 .. default-domain:: cpp
 .. highlight:: cpp
+.. _sdlpp-core-version:
 
 Version Information
 ====================

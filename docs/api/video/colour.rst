@@ -1,6 +1,6 @@
-.. _sdlpp-video-colour:
 .. default-domain:: cpp
 .. highlight:: cpp
+.. _sdlpp-video-colour:
 
 Colour
 =======
