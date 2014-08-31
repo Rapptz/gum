@@ -11,7 +11,7 @@ seamlessly with the rest of the SDL++ API.
 
 This file can be included through::
 
-    #include <sdlpp/video/window.hpp>
+    #include <sdl++/video/window.hpp>
 
 .. namespace:: sdl
 

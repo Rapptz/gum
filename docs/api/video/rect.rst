@@ -16,10 +16,10 @@ you will be able to interact with the SDL++ API more fluidly.
 These files can be included through::
 
     // for rect
-    #include <sdlpp/video/rect.hpp>
+    #include <sdl++/video/rect.hpp>
 
     // for vector
-    #include <sdlpp/video/vector.hpp>
+    #include <sdl++/video/vector.hpp>
 
 .. class:: rect
 

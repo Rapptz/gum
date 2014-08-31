@@ -11,7 +11,7 @@ include things such as the version, errors, and initialisation of SDL.
 
 Certain functions are available only if the master file is included::
 
-    #include <sdlpp/core.hpp>
+    #include <sdl++/core.hpp>
 
 .. function:: void delay(unsigned ms)
 

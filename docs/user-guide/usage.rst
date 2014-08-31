@@ -32,13 +32,13 @@ Each module also contains a master file that includes the entire contents of the
 .. code-block:: cpp
 
     // includes all of 'core' module
-    #include <sdlpp/core.hpp>
+    #include <sdl++/core.hpp>
 
     // includes just the 'color' struct of the 'video' module
-    #include <sdlpp/video/color.hpp>
+    #include <sdl++/video/color.hpp>
 
     // includes just 'init' of the 'core' module
-    #include <sdlpp/core/init.hpp>
+    #include <sdl++/core/init.hpp>
 
 All the headers and structs can be found in the API reference section.
 

@@ -24,7 +24,7 @@ Just like ``SDL_Init``, it should only be called once.
 
 This file can be included through::
 
-    #include <sdlpp/core/init.hpp>
+    #include <sdl++/core/init.hpp>
 
 .. namespace:: sdl
 

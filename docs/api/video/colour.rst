@@ -11,7 +11,7 @@ defines some commonly available colours for use.
 
 This file can be included through::
 
-    #include <sdlpp/video/colour.hpp>
+    #include <sdl++/video/colour.hpp>
 
 .. namespace:: sdl
 

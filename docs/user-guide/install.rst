@@ -72,7 +72,7 @@ After that, the 'installation' should be over.
 
 Doing these steps through the command line are as follows::
 
-    $ setx CPATH C:\sdlpp;%CPATH%
+    $ setx CPATH C:\SDL++;%CPATH%
 
 Note that the ``setx`` command is only available for Windows Vista and higher.
 
@@ -83,6 +83,6 @@ Installation on Linux or Mac OS
 
 On Linux and Mac OS, installation is relatively simple. Rather than fiddling around with environment variables,
 many compilers (GCC, Clang, etc) tend to have /usr/include and /usr/local/include as the default
-include search paths. You can do this as follows (assuming it's installed in ~/sdlpp)::
+include search paths. You can do this as follows (assuming it's installed in ~/SDL++)::
 
-    $ cp -r ~/sdlpp/sdlpp /usr/local/include
+    $ cp -r ~/SDL++/sdl++ /usr/local/include

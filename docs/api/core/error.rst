@@ -14,7 +14,7 @@ functions that retrieve the error string and clears it for you.
 
 This file can be included through::
 
-    #include <sdlpp/core/error.hpp>
+    #include <sdl++/core/error.hpp>
 
 .. namespace:: sdl
 

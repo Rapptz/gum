@@ -11,7 +11,7 @@ to wrap them up in a nice manner that don't involve a faux constructor.
 
 This file can be included through::
 
-    #include <sdlpp/core/version.hpp>
+    #include <sdl++/core/version.hpp>
 
 .. namespace:: sdl
 
