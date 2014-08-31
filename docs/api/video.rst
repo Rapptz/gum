@@ -11,7 +11,7 @@ Contents:
 .. toctree::
     :maxdepth: 1
 
-    Colours               <video/colour>
-    Window Management     <video/window>
-    Rectangles and Points <video/rect>
+    video/colour
+    video/window
+    video/rect
 

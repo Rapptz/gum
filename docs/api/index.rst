@@ -12,5 +12,5 @@ Contents:
 .. toctree::
     :maxdepth: 2
 
-    SDL++ Core  <core>
-    Video       <video>
+    core
+    video

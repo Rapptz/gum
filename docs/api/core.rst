@@ -24,7 +24,7 @@ Contents:
 .. toctree::
     :maxdepth: 1
 
-    Initialisation      <core/init>
-    Error Handling      <core/error>
-    Version Information <core/version>
+    core/init
+    core/error
+    core/version
 

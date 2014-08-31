@@ -20,8 +20,9 @@
 #ifndef SDLPP_VIDEO_WINDOW_HPP
 #define SDLPP_VIDEO_WINDOW_HPP
 
-#include "surface.hpp"
 #include <SDL_video.h>
+#include <SDL_render.h>
+#include <memory>
 #include <string>
 #include <cstdint>
 
@@ -35,60 +36,91 @@ struct window_deleter {
     }
 };
 
+struct renderer_deleter {
+    void operator()(SDL_Renderer* renderer) const noexcept {
+        if(renderer != nullptr) {
+            SDL_DestroyRenderer(renderer);
+            renderer = nullptr;
+        }
+    }
+};
+
+namespace renderer {
+enum : uint32_t {
+    software       = SDL_RENDERER_SOFTWARE,
+    accelerated    = SDL_RENDERER_ACCELERATED,
+    present_vsync  = SDL_RENDERER_PRESENTVSYNC,
+    target_texture = SDL_RENDERER_TARGETTEXTURE,
+};
+} // renderer
+
 struct window {
 private:
     std::unique_ptr<SDL_Window, window_deleter> ptr;
-    surface_view surf;
-    public:
-        static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
-        static const auto centered = SDL_WINDOWPOS_CENTERED;
+    std::unique_ptr<SDL_Renderer, renderer_deleter> render;
+public:
+    static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
+    static const auto centered = SDL_WINDOWPOS_CENTERED;
 
-        enum flags : uint32_t {
-            fullscreen         = SDL_WINDOW_FULLSCREEN,
-            fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
-            opengl             = SDL_WINDOW_OPENGL,
-            hidden             = SDL_WINDOW_HIDDEN,
-            borderless         = SDL_WINDOW_BORDERLESS,
-            resizable          = SDL_WINDOW_RESIZABLE,
-            minimized          = SDL_WINDOW_MINIMIZED,
-            maximized          = SDL_WINDOW_MAXIMIZED,
-            input_grabbed      = SDL_WINDOW_INPUT_GRABBED,
-            highdpi            = SDL_WINDOW_ALLOW_HIGHDPI
-        };
+    enum flags : uint32_t {
+        fullscreen         = SDL_WINDOW_FULLSCREEN,
+        fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
+        opengl             = SDL_WINDOW_OPENGL,
+        hidden             = SDL_WINDOW_HIDDEN,
+        borderless         = SDL_WINDOW_BORDERLESS,
+        resizable          = SDL_WINDOW_RESIZABLE,
+        minimized          = SDL_WINDOW_MINIMIZED,
+        maximized          = SDL_WINDOW_MAXIMIZED,
+        input_grabbed      = SDL_WINDOW_INPUT_GRABBED,
+        highdpi            = SDL_WINDOW_ALLOW_HIGHDPI
+    };
 
-        window(const std::string& title, int width, int height, uint32_t f = 0):
-        ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f)) {
-            if(ptr == nullptr) {
-                throw error();
-            }
-
-            surf = surface_view(SDL_GetWindowSurface(ptr.get()));
+    window(const std::string& title, int width, int height, uint32_t flag = 0):
+    ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
+        if(ptr == nullptr) {
+            throw error();
         }
+        render.reset(SDL_CreateRenderer(ptr.get(), -1, renderer::accelerated));
 
-        bool is_open() const noexcept {
-            return ptr != nullptr;
+        if(render == nullptr) {
+            throw error();
         }
+    }
 
-        void fill(const color& c) {
-            surf.fill(c);
-        }
+    bool is_open() const noexcept {
+        return ptr != nullptr;
+    }
 
-        SDL_Window* data() const noexcept {
-            return ptr.get();
-        }
+    void clear(const colour& c = colour::black) {
+        SDL_SetRenderDrawColor(render.get(), c.r, c.g, c.b, c.a);
+        SDL_RenderClear(render.get());
+    }
 
-        void close() {
-            ptr.reset(nullptr);
-        }
+    SDL_Window* data() const noexcept {
+        return ptr.get();
+    }
 
-        template<typename Deleter>
-        void display(const basic_surface<Deleter>& s) {
-            surf.blit(s);
-        }
+    SDL_Renderer* renderer() const noexcept {
+        return render.get();
+    }
 
-        void update() {
-            SDL_UpdateWindowSurface(ptr.get());
+    float brightness() const noexcept {
+        return SDL_GetWindowBrightness(ptr.get());
+    }
+
+    void brightness(float bright) {
+        if(SDL_SetWindowBrightness(ptr.get(), bright)) {
+            throw error();
         }
+    }
+
+    void close() noexcept {
+        ptr.reset(nullptr);
+    }
+
+    void display() noexcept {
+        SDL_RenderPresent(render.get());
+    }
 };
 } // sdl
 
