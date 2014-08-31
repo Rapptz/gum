@@ -1,4 +1,4 @@
-// SDL++
+// gum
 // Copyright (C) 2014 Rapptz
 
 // This software is provided 'as-is', without any express or implied
@@ -17,17 +17,12 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_CORE_HPP
-#define SDLPP_CORE_HPP
+#ifndef SDLPP_VIDEO_HPP
+#define SDLPP_VIDEO_HPP
 
-#include "core/error.hpp"
-#include "core/init.hpp"
-#include "core/version.hpp"
+#include "video/colour.hpp"
+#include "video/rect.hpp"
+#include "video/vector.hpp"
+#include "video/window.hpp"
 
-namespace sdl {
-inline void delay(unsigned ms) {
-    SDL_Delay(ms);
-}
-} // sdl
-
-#endif // SDLPP_CORE_HPP
+#endif // SDLPP_VIDEO_HPP

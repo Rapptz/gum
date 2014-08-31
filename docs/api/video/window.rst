@@ -1,17 +1,17 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-.. _sdlpp-video-window:
+.. _gum-video-window:
 
 Window Management
 ===================
 
 One of the nicest features of SDL is the ability to easily create a window regardless of the platform used.
-SDL++ simplifies this even further by giving ``SDL_Window*`` a more object oriented API that interacts
-seamlessly with the rest of the SDL++ API.
+``gum`` simplifies this even further by giving ``SDL_Window*`` a more object oriented API that interacts
+seamlessly with the rest of the ``gum`` API.
 
 This file can be included through::
 
-    #include <sdl++/video/window.hpp>
+    #include <gum/video/window.hpp>
 
 .. namespace:: sdl
 

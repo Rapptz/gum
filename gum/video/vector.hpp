@@ -1,4 +1,4 @@
-// SDL++
+// gum
 // Copyright (C) 2014 Rapptz
 
 // This software is provided 'as-is', without any express or implied

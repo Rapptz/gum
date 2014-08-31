@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# sdlpp documentation build configuration file, created by
+# gum documentation build configuration file, created by
 # sphinx-quickstart on Wed Aug 27 21:37:44 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SDL++'
+project = u'gum'
 copyright = u'2014, Rapptz'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -180,7 +180,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SDL++doc'
+htmlhelp_basename = 'gumdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -200,7 +200,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'SDL++.tex', u'SDL++ Documentation',
+  ('index', 'gum.tex', u'gum Documentation',
    u'Rapptz', 'manual'),
 ]
 
@@ -230,7 +230,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'SDL++', u'SDL++ Documentation',
+    ('index', 'gum', u'gum Documentation',
      [u'Rapptz'], 1)
 ]
 
@@ -244,8 +244,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'SDL++', u'SDL++ Documentation',
-   u'Rapptz', 'SDL++', 'One line description of project.',
+  ('index', 'gum', u'gum Documentation',
+   u'Rapptz', 'gum', 'One line description of project.',
    'Miscellaneous'),
 ]
 

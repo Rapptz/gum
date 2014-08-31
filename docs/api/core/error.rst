@@ -1,6 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-.. _sdlpp-core-error:
+.. _gum-core-error:
 
 Error Handling
 =================
@@ -9,12 +9,12 @@ SDL offers basic error handling through ``SDL_GetError`` which is fine, but is n
 doing error handling in C++. When an error occurs in C++, the error is thrown as exception and the user is responsible
 for handling the error.
 
-This header defines the exception object that is thrown by different classes in SDL++ along with some other
+This header defines the exception object that is thrown by different classes in ``gum`` along with some other
 functions that retrieve the error string and clears it for you.
 
 This file can be included through::
 
-    #include <sdl++/core/error.hpp>
+    #include <gum/core/error.hpp>
 
 .. namespace:: sdl
 

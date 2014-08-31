@@ -1,6 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-.. _sdlpp-core-version:
+.. _gum-core-version:
 
 Version Information
 ====================
@@ -11,7 +11,7 @@ to wrap them up in a nice manner that don't involve a faux constructor.
 
 This file can be included through::
 
-    #include <sdl++/core/version.hpp>
+    #include <gum/core/version.hpp>
 
 .. namespace:: sdl
 

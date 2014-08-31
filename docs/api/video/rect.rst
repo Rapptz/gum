@@ -1,7 +1,7 @@
 .. default-domain:: cpp
 .. highlight:: cpp
 .. namespace:: sdl
-.. _sdlpp-video-rect:
+.. _gum-video-rect:
 
 Rectangles, Points, and Vectors
 =================================
@@ -9,17 +9,17 @@ Rectangles, Points, and Vectors
 .. |rect| replace:: :class:`rect`
 .. |vector| replace:: :class:`vector`
 
-SDL offers ways to create simple rectangles and points. SDL++ extends this by giving rectangles a more object
+SDL offers ways to create simple rectangles and points. ``gum`` extends this by giving rectangles a more object
 oriented API, and extending points to be full basic two-dimensional vector types. Through the |vector| class,
-you will be able to interact with the SDL++ API more fluidly.
+you will be able to interact with the ``gum`` API more fluidly.
 
 These files can be included through::
 
     // for rect
-    #include <sdl++/video/rect.hpp>
+    #include <gum/video/rect.hpp>
 
     // for vector
-    #include <sdl++/video/vector.hpp>
+    #include <gum/video/vector.hpp>
 
 .. class:: rect
 

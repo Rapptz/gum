@@ -1,17 +1,17 @@
 .. default-domain:: cpp
 .. highlight:: cpp
 
-.. _sdlpp-core:
+.. _gum-core:
 
-SDL++ Core
+Gum Core
 =============
 
-The SDL++ core module defines things that allow you to query core things about SDL. These
+The ``gum`` core module defines things that allow you to query core things about SDL. These
 include things such as the version, errors, and initialisation of SDL.
 
 Certain functions are available only if the master file is included::
 
-    #include <sdl++/core.hpp>
+    #include <gum/core.hpp>
 
 .. function:: void delay(unsigned ms)
 

@@ -1,4 +1,4 @@
-.. _sdlpp-video:
+.. _gum-video:
 
 Video
 ========

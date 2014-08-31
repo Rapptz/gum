@@ -1,9 +1,9 @@
-.. _sdlpp-user-guide:
+.. _gum-user-guide:
 
 User Guide
 ===============
 
-Welcome to the User Guide for SDL++. This section goes over how to install and use SDL++.
+Welcome to the User Guide for ``gum``. This section goes over how to install and use ``gum``.
 
 Contents:
 
@@ -11,4 +11,4 @@ Contents:
    :maxdepth: 2
 
    Installation <install>
-   Using SDL++  <usage>
+   Using Gum    <usage>

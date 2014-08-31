@@ -1,25 +1,25 @@
-.. _sdlpp-installation-guide:
+.. _gum-installation-guide:
 
 Installation
 =============
 
-SDL++ is header only, and as a result of that installation is incredibly easy. In fact, there is no need to explicitly
+``gum`` is header only, and as a result of that installation is incredibly easy. In fact, there is no need to explicitly
 install anything. The installation step mainly involves putting the files in the default search paths of the compiler
 which would allow you to write ``<include>`` instead of ``"include"`` without having to specify the compiler where they
 are. If you don't want this, you're free to skip this section.
 
-.. _sdlpp-supported-compilers:
+.. _gum-supported-compilers:
 
 Supported Compilers
 --------------------
 
-Due to the C++11 nature of SDL++, a more modern compiler is needed to compile code that
-includes SDL++. At the moment, the officially supported compilers are:
+Due to the C++11 nature of ``gum``, a more modern compiler is needed to compile code that
+includes ``gum``. At the moment, the officially supported compilers are:
 
 * GCC 4.8.1 and higher
 * Clang 3.3 and higher
 
-If you'd like to know if your compiler supports SDL++, an extensive list of C++11 features used
+If you'd like to know if your compiler supports ``gum``, an extensive list of C++11 features used
 are given below:
 
 * ``=default``, ``=delete`` for functions and constructors
@@ -34,9 +34,9 @@ are given below:
 * Setting the underlying type of the enum. e.g. ``enum test : char``.
 
 
-Of course, the easiest way to see if your compiler supports SDL++ is to compile a test file yourself and see.
+Of course, the easiest way to see if your compiler supports ``gum`` is to compile a test file yourself and see.
 
-.. _sdlpp-windows-install:
+.. _gum-windows-install:
 
 Installation on Windows
 ------------------------
@@ -72,17 +72,18 @@ After that, the 'installation' should be over.
 
 Doing these steps through the command line are as follows::
 
-    $ setx CPATH C:\SDL++;%CPATH%
+    $ setx CPATH C:\``gum``;%CPATH%
 
 Note that the ``setx`` command is only available for Windows Vista and higher.
 
-.. _sdlpp-linux-install:
+.. _gum-linux-install:
 
 Installation on Linux or Mac OS
 --------------------------------
 
 On Linux and Mac OS, installation is relatively simple. Rather than fiddling around with environment variables,
 many compilers (GCC, Clang, etc) tend to have /usr/include and /usr/local/include as the default
-include search paths. You can do this as follows (assuming it's installed in ~/SDL++)::
+include search paths. You can do this as follows (assuming it's installed in ~/``gum``)::
 
-    $ cp -r ~/SDL++/sdl++ /usr/local/include
+    $ cd ~/``gum``
+    $ cp -r ``gum`` /usr/local/include

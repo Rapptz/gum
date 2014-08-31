@@ -1,6 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-.. _sdlpp-core-init:
+.. _gum-core-init:
 
 Initialisation
 ===============
@@ -24,7 +24,7 @@ Just like ``SDL_Init``, it should only be called once.
 
 This file can be included through::
 
-    #include <sdl++/core/init.hpp>
+    #include <gum/core/init.hpp>
 
 .. namespace:: sdl
 
