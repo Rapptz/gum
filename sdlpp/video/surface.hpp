@@ -67,8 +67,10 @@ public:
 
 struct surface_deleter {
     void operator()(SDL_Surface* surface) const noexcept {
-        SDL_FreeSurface(surface);
-        surface = nullptr;
+        if(surface != nullptr) {
+            SDL_FreeSurface(surface);
+            surface = nullptr;
+        }
     }
 };
 

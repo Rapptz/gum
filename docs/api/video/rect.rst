@@ -3,8 +3,8 @@
 .. namespace:: sdl
 .. _sdlpp-video-rect:
 
-Rectangles and Points
-=======================
+Rectangles, Points, and Vectors
+=================================
 
 .. |rect| replace:: :class:`rect`
 .. |vector| replace:: :class:`vector`

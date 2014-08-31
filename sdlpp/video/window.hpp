@@ -26,9 +26,18 @@
 #include <cstdint>
 
 namespace sdl {
+struct window_deleter {
+    void operator()(SDL_Window* window) const noexcept {
+        if(window != nullptr) {
+            SDL_DestroyWindow(window);
+            window = nullptr;
+        }
+    }
+};
+
 struct window {
 private:
-    std::unique_ptr<SDL_Window, decltype(SDL_DestroyWindow)*> ptr;
+    std::unique_ptr<SDL_Window, window_deleter> ptr;
     surface_view surf;
     public:
         static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
@@ -48,7 +57,7 @@ private:
         };
 
         window(const std::string& title, int width, int height, uint32_t f = 0):
-        ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f), SDL_DestroyWindow) {
+        ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, f)) {
             if(ptr == nullptr) {
                 throw error();
             }

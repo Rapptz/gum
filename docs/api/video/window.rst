@@ -29,34 +29,34 @@ This file can be included through::
         are the same as the ``SDL_WINDOW_*`` flags except turned lower case and into
         snake_case.
 
-        .. c:var fullscreen
+        .. c:var:: fullscreen
 
             A fullscreen window.
-        .. c:var fullscreen_desktop
+        .. c:var:: fullscreen_desktop
 
             A fullscreen window at desktop resolution.
-        .. c:var opengl
+        .. c:var:: opengl
 
             A window usable with OpenGL.
-        .. c:var hidden
+        .. c:var:: hidden
 
             A window that is not visible.
-        .. c:var borderless
+        .. c:var:: borderless
 
             A borderless window.
-        .. c:var resizable
+        .. c:var:: resizable
 
             A window that can be resized.
-        .. c:var minimized
+        .. c:var:: minimized
 
             A window that starts out minimised.
-        .. c:var maximized
+        .. c:var:: maximized
 
             A window that starts out maximised.
-        .. c:var input_grabbed
+        .. c:var:: input_grabbed
 
             A window that grabs all input focus.
-        .. c:var highdpi
+        .. c:var:: highdpi
 
             A window that supports high-DPI if available.
 
