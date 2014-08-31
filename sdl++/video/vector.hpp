@@ -136,7 +136,7 @@ inline int distance_squared(const vector& from, const vector& to) noexcept {
 }
 
 inline double distance(const vector& from, const vector& to) noexcept {
-    return std::sqrt(distance_squared_to(to));
+    return std::sqrt(distance_squared(from, to));
 }
 
 inline double angle_between(const vector& from, const vector& to) noexcept {
