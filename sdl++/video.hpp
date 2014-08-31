@@ -21,7 +21,8 @@
 #define SDLPP_VIDEO_HPP
 
 #include "video/colour.hpp"
-#include "video/surface.hpp"
+#include "video/rect.hpp"
+#include "video/vector.hpp"
 #include "video/window.hpp"
 
 #endif // SDLPP_VIDEO_HPP
