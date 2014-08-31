@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'sdlpp'
+project = u'SDL++'
 copyright = u'2014, Rapptz'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -180,7 +180,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'sdlppdoc'
+htmlhelp_basename = 'SDL++doc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -200,7 +200,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'sdlpp.tex', u'sdlpp Documentation',
+  ('index', 'SDL++.tex', u'SDL++ Documentation',
    u'Rapptz', 'manual'),
 ]
 
@@ -230,7 +230,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'sdlpp', u'sdlpp Documentation',
+    ('index', 'SDL++', u'SDL++ Documentation',
      [u'Rapptz'], 1)
 ]
 
@@ -244,8 +244,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'sdlpp', u'sdlpp Documentation',
-   u'Rapptz', 'sdlpp', 'One line description of project.',
+  ('index', 'SDL++', u'SDL++ Documentation',
+   u'Rapptz', 'SDL++', 'One line description of project.',
    'Miscellaneous'),
 ]
 
