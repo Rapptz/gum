@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_VIDEO_VECTOR_HPP
-#define SDLPP_VIDEO_VECTOR_HPP
+#ifndef GUM_VIDEO_VECTOR_HPP
+#define GUM_VIDEO_VECTOR_HPP
 
 #include <SDL_rect.h>
 #include <cmath>
@@ -148,4 +148,4 @@ inline double direction(const vector& from, const vector& to) noexcept {
 }
 } // sdl
 
-#endif // SDLPP_VIDEO_VECTOR_HPP
+#endif // GUM_VIDEO_VECTOR_HPP

@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_CORE_INIT_HPP
-#define SDLPP_CORE_INIT_HPP
+#ifndef GUM_CORE_INIT_HPP
+#define GUM_CORE_INIT_HPP
 
 #include "error.hpp"
 #include <SDL.h>
@@ -80,4 +80,4 @@ public:
 };
 } // sdl
 
-#endif // SDLPP_CORE_INIT_HPP
+#endif // GUM_CORE_INIT_HPP

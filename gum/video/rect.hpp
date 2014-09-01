@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_VIDEO_RECT_HPP
-#define SDLPP_VIDEO_RECT_HPP
+#ifndef GUM_VIDEO_RECT_HPP
+#define GUM_VIDEO_RECT_HPP
 
 #include <SDL_rect.h>
 
@@ -70,4 +70,4 @@ constexpr bool operator>=(const rect& lhs, const rect& rhs) {
 }
 } // sdlpp
 
-#endif // SDLPP_VIDEO_RECT_HPP
+#endif // GUM_VIDEO_RECT_HPP

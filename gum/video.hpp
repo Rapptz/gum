@@ -17,12 +17,12 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_VIDEO_HPP
-#define SDLPP_VIDEO_HPP
+#ifndef GUM_VIDEO_HPP
+#define GUM_VIDEO_HPP
 
 #include "video/colour.hpp"
 #include "video/rect.hpp"
 #include "video/vector.hpp"
 #include "video/window.hpp"
 
-#endif // SDLPP_VIDEO_HPP
+#endif // GUM_VIDEO_HPP

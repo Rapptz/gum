@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_CORE_HPP
-#define SDLPP_CORE_HPP
+#ifndef GUM_CORE_HPP
+#define GUM_CORE_HPP
 
 #include "core/error.hpp"
 #include "core/init.hpp"
@@ -30,4 +30,4 @@ inline void delay(unsigned ms) {
 }
 } // sdl
 
-#endif // SDLPP_CORE_HPP
+#endif // GUM_CORE_HPP

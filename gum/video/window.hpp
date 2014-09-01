@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_VIDEO_WINDOW_HPP
-#define SDLPP_VIDEO_WINDOW_HPP
+#ifndef GUM_VIDEO_WINDOW_HPP
+#define GUM_VIDEO_WINDOW_HPP
 
 #include <SDL_video.h>
 #include <SDL_render.h>
@@ -124,4 +124,4 @@ public:
 };
 } // sdl
 
-#endif // SDLPP_VIDEO_WINDOW_HPP
+#endif // GUM_VIDEO_WINDOW_HPP

@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef SDLPP_VIDEO_COLOUR_HPP
-#define SDLPP_VIDEO_COLOUR_HPP
+#ifndef GUM_VIDEO_COLOUR_HPP
+#define GUM_VIDEO_COLOUR_HPP
 
 #include <SDL_pixels.h>
 #include <cstdint>
@@ -52,4 +52,4 @@ const colour colour::cyan        = { 0, 255, 255, 255 };
 using color = colour;
 } // sdl
 
-#endif // SDLPP_VIDEO_COLOUR_HPP
+#endif // GUM_VIDEO_COLOUR_HPP
