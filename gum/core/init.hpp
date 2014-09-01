@@ -47,7 +47,7 @@ public:
 
     init(uint32_t subsystems = flags::video) {
         if(SDL_Init(subsystems) < 0) {
-            throw error();
+            GUM_ERROR_HANDLER();
         }
     }
 
@@ -70,7 +70,7 @@ public:
 
     void start(uint32_t subsystem) const {
         if(SDL_InitSubSystem(subsystem) < 0) {
-            throw error();
+            GUM_ERROR_HANDLER();
         }
     }
 

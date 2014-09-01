@@ -20,6 +20,7 @@
 #ifndef GUM_VIDEO_DISPLAY_MODE_HPP
 #define GUM_VIDEO_DISPLAY_MODE_HPP
 
+#include "../core/error.hpp"
 #include <SDL_video.h>
 #include <vector>
 
@@ -27,7 +28,7 @@ namespace sdl {
 int number_of_video_displays() {
     int result = SDL_GetNumVideoDisplays();
     if(result < 1) {
-        throw error();
+        GUM_ERROR_HANDLER(result);
     }
     return result;
 }
@@ -35,15 +36,15 @@ int number_of_video_displays() {
 struct display_mode : SDL_DisplayMode {
     static std::vector<display_mode> available(int index = 0) {
         int count = SDL_GetNumDisplayModes(index);
+        std::vector<display_mode> result;
         if(count < 1) {
-            throw error();
+            GUM_ERROR_HANDLER(result);
         }
 
         display_mode mode;
-        std::vector<display_mode> result;
         for(int i = 0; i < count; ++i) {
             if(SDL_GetDisplayMode(index, i, &mode)) {
-                throw error();
+                GUM_ERROR_HANDLER(result);
             }
             result.push_back(mode);
         }
@@ -54,7 +55,7 @@ struct display_mode : SDL_DisplayMode {
     static display_mode desktop(int index = 0) {
         display_mode result;
         if(SDL_GetDesktopDisplayMode(index, &result)) {
-            throw error();
+            GUM_ERROR_HANDLER(result);
         }
         return result;
     }
@@ -62,7 +63,7 @@ struct display_mode : SDL_DisplayMode {
     static display_mode closest(const display_mode& to, int index = 0) {
         display_mode result;
         if(SDL_GetClosestDisplayMode(index, &to, &result) == nullptr) {
-            throw error();
+            GUM_ERROR_HANDLER(result);
         }
         return result;
     }
@@ -77,7 +78,7 @@ struct display_mode : SDL_DisplayMode {
         source.driverdata = nullptr;
 
         if(SDL_GetClosestDisplayMode(index, &source, &result) == nullptr) {
-            throw error();
+            GUM_ERROR_HANDLER(result);
         }
         return result;
     }

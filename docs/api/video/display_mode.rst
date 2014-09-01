@@ -6,6 +6,8 @@
 Window Display Modes
 =========================
 
+.. |error| replace:: :ref:`gum-core-error`
+
 SDL offers a way to query the display mode of a display (monitor, etc) that is proper for a :class:`window`. ``gum``
 offers a way to wrap this up in a way that doesn't deal with loops or counters.
 
@@ -17,7 +19,7 @@ This file can be included through::
 
     Returns the number of video displays available. Note that for all functions that take
     in a display index, the index should be in the range of 0 to ``number_of_video_displays() - 1``.
-    Throws :class:`error` if an error occurs.
+    If an error occurs, the error handler is invoked. See |error|.
 
 .. class:: display_mode
 
@@ -42,16 +44,16 @@ This file can be included through::
     .. function:: static std::vector<display_mode> available(int index = 0)
 
         Returns all available and valid display modes for the current display. A display index of 0 is the main display.
-        Throws :class:`error` if an error occurs.
+        If an error occurs, the error handler is invoked. See |error|.
     .. function:: static display_mode desktop(int index = 0)
 
         Returns the desktop display mode for the current display as if calling ``SDL_GetDesktopDisplayMode``.
-        A display index of 0 is the main display. Throws :class:`error` if an error occurs.
+        A display index of 0 is the main display. If an error occurs, the error handler is invoked. See |error|.
     .. function:: static display_mode closest(const display_mode& to, int index = 0)
                   static display_mode closest(int width, int height, int index = 0)
 
         Returns the closest display mode for the current display to the one desired.
         Instead of a :class:`display_mode`, a width and a height could be used instead.
-        Throws :class:`error` if an error occurs.
+        If an error occurs, the error handler is invoked. See |error|.
 
 

@@ -5,6 +5,8 @@
 Window Management
 ===================
 
+.. |error| replace:: :ref:`gum-core-error`
+
 One of the nicest features of SDL is the ability to easily create a window regardless of the platform used.
 ``gum`` simplifies this even further by giving ``SDL_Window*`` a more object oriented API that interacts
 seamlessly with the rest of the ``gum`` API.
@@ -82,10 +84,11 @@ follows:
 
         Creates a window with a title and a display mode or width and height. The :class:`display_mode` is
         used for retrieving the height and the width of the window. Initialisation flags
-        could also be specified, but they default to zero. If window creation fails
-        then :class:`error` is thrown. Also creates a hardware accelerated renderer
-        to render things into the window. If creation of this renderer fails, then
-        :class:`error` is thrown.
+        could also be specified, but they default to zero. Also creates a hardware
+        accelerated renderer to render things into the window.
+
+        If the creation of the renderer fails, or the initialisation of the window fails
+        then the error handler is invoked. See |error|.
 
         **Parameters:**
 
@@ -101,7 +104,7 @@ follows:
                   void brightness(float b)
 
         Sets or gets the display of the window's brightness. Returns 0.0 for completely dark, and
-        1.0 for normal brightness. If retrieval fails :class:`error` is thrown.
+        1.0 for normal brightness. If retrieval fails, the error handler is invoked. See |error|.
     .. function:: void clear(const colour& c)
 
         Clears the window with the specified :class:`colour`.

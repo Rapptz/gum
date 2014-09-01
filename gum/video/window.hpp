@@ -20,6 +20,7 @@
 #ifndef GUM_VIDEO_WINDOW_HPP
 #define GUM_VIDEO_WINDOW_HPP
 
+#include "../core/error.hpp"
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <memory>
@@ -82,12 +83,12 @@ public:
     window(const std::string& title, int width, int height, uint32_t flag = 0):
     ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
         if(ptr == nullptr) {
-            throw error();
+            GUM_ERROR_HANDLER();
         }
         render.reset(SDL_CreateRenderer(ptr.get(), -1, renderer::accelerated));
 
         if(render == nullptr) {
-            throw error();
+            GUM_ERROR_HANDLER();
         }
     }
 
@@ -114,7 +115,7 @@ public:
 
     void brightness(float bright) {
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
-            throw error();
+            GUM_ERROR_HANDLER();
         }
     }
 

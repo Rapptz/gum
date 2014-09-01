@@ -21,6 +21,7 @@
 #define GUM_CORE_ERROR_HPP
 
 #include <SDL_error.h>
+#include <SDL_log.h>
 #include <stdexcept>
 
 namespace sdl {
@@ -35,6 +36,14 @@ public:
     error(): std::runtime_error(last_error()) {}
     error(const std::string& str): std::runtime_error(str) {}
 };
+
+#ifndef GUM_ERROR_HANDLER
+#if defined(GUM_NO_EXCEPTIONS)
+#define GUM_ERROR_HANDLER(result) do { SDL_Log("%s", SDL_GetError()); SDL_ClearError(); return result; } while(0)
+#else
+#define GUM_ERROR_HANDLER(result) throw error()
+#endif // GUM_NO_EXCEPTIONS
+#endif // GUM_ERROR_HANDLER
 } // sdl
 
 #endif // GUM_CORE_ERROR_HPP
