@@ -77,9 +77,11 @@ follows:
 
             A window that supports high-DPI if available.
 
-    .. function:: window(const std::string& title, int width, int height, uint32_t f = 0)
+    .. function:: window(const std::string& title, const SDL_DisplayMode& display, uint32_t f = 0)
+                  window(const std::string& title, int width, int height, uint32_t f = 0)
 
-        Creates a window with a title and a height and width. Initialisation flags
+        Creates a window with a title and a display mode or width and height. The :class:`display_mode` is
+        used for retrieving the height and the width of the window. Initialisation flags
         could also be specified, but they default to zero. If window creation fails
         then :class:`error` is thrown. Also creates a hardware accelerated renderer
         to render things into the window. If creation of this renderer fails, then

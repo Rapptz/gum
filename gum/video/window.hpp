@@ -75,6 +75,10 @@ public:
         highdpi            = SDL_WINDOW_ALLOW_HIGHDPI
     };
 
+
+    window(const std::string& title, const SDL_DisplayMode& display, uint32_t flag = 0):
+        window(title, display.w, display.h, flag) {}
+
     window(const std::string& title, int width, int height, uint32_t flag = 0):
     ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
         if(ptr == nullptr) {

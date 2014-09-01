@@ -48,8 +48,10 @@ This file can be included through::
         Returns the desktop display mode for the current display as if calling ``SDL_GetDesktopDisplayMode``.
         A display index of 0 is the main display. Throws :class:`error` if an error occurs.
     .. function:: static display_mode closest(const display_mode& to, int index = 0)
+                  static display_mode closest(int width, int height, int index = 0)
 
         Returns the closest display mode for the current display to the one desired.
+        Instead of a :class:`display_mode`, a width and a height could be used instead.
         Throws :class:`error` if an error occurs.
 
 

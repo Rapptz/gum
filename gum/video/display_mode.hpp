@@ -66,6 +66,21 @@ struct display_mode : SDL_DisplayMode {
         }
         return result;
     }
+
+    static display_mode closest(int width, int height, int index = 0) {
+        display_mode result;
+        display_mode source;
+        source.w = width;
+        source.h = height;
+        source.format = 0;
+        source.refresh_rate = 0;
+        source.driverdata = nullptr;
+
+        if(SDL_GetClosestDisplayMode(index, &source, &result) == nullptr) {
+            throw error();
+        }
+        return result;
+    }
 };
 } // sdl
 
