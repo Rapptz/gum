@@ -5,8 +5,7 @@
 Error Handling
 =================
 
-SDL offers basic error handling through ``SDL_GetError`` which is fine, but is not typically the idiomatic way of
-doing error handling in C++. When an error occurs in C++, the error is thrown as exception and the user is responsible
+SDL offers basic error handling through ``SDL_GetError``. ``gum`` provides a more idiomatic method for error handling. When an error occurs in C++, the error is thrown as an exception and the user is responsible
 for handling the error. However, sometimes this isn't needed and sometimes you want to interact with the errors yourself.
 ``gum`` offers a way to do that through macros. You can read more below.
 

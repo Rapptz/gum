@@ -18,8 +18,7 @@ it is up to the implementation what this means. In practice, this means that the
 specifying it to the compiler, or it's found through the default include paths.
 
 Internally, ``gum`` includes its other components through the use of quotations, e.g. ``#include "../core/version.hpp"``.
-As a consequence of this, the internal directory structure should **not** be touched or messed around with. It will only
-cause pain.
+As a consequence of this, the internal directory structure should **not** be touched or messed around with.
 
 ``gum`` headers can be found in the ``gum`` subdirectory. Since ``gum`` is split into 'modules', there will be some
 subdirectories that you'd need to access to get to the meat of the library. The modules provided by ``gum`` are as follows:
@@ -47,7 +46,7 @@ All the headers and structs can be found in the API reference section.
 Namespace
 -----------
 
-``gum`` uses the ``sdl`` namespace for all its structs, functions, etc. There are currently no subnamespaces.
+``gum`` uses the ``sdl`` namespace. There are currently no subnamespaces.
 
 .. _gum-versioning:
 

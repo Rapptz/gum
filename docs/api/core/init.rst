@@ -10,8 +10,7 @@ Initialisation
 
 As many are aware, SDL requires initialisation of its internal subsystems. Mainly, you
 initialise the subsystems you need, and then at the end of the program you call ``SDL_Quit``.
-Since this is C++, this screams for a RAII wrapper. The |init| class is there to provide that
-RAII facility.
+``gum`` provides a RAII wrapper for SDL initialisation in the form of the |init| class.
 
 It also defines all the ``SDL_INIT_*`` flags through a nested enum in the class to be more 'C++-like'.
 Just like ``SDL_Init``, it should only be called once.

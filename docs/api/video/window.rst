@@ -7,7 +7,7 @@ Window Management
 
 .. |error| replace:: :ref:`gum-core-error`
 
-One of the nicest features of SDL is the ability to easily create a window regardless of the platform used.
+SDL has the ability to create windows easily regardless of the platform used.
 ``gum`` simplifies this even further by giving ``SDL_Window*`` a more object oriented API that interacts
 seamlessly with the rest of the ``gum`` API.
 
