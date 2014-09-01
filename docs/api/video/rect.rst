@@ -115,7 +115,7 @@ These files can be included through::
         The behaviour is undefined if the operation overflows.
     .. function:: vector& operator*=(int scalar) noexcept
 
-        Implements member-wise scalar multiplication with a vector. For example, ``a += 4`` is equivalent to ``a.x *= 4; a.y *= 4``.
+        Implements member-wise scalar multiplication with a vector. For example, ``a += 4`` is equivalent to ``a.x *= 4; a.y *= 4;``.
 
         The behaviour is undefined if the operation overflows.
 

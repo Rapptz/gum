@@ -26,7 +26,7 @@ This file can be included through::
 
     If finer gratuity is needed for error handling, you can define this macro with an
     error handler to use. Note that the macro is called as ``GUM_ERROR_HANDLER(result);`` with
-    a trailing semicolon. The result parameter is what the function would return. The return
+    the trailing semicolon. The result parameter is what the function would return. The return
     value is not guaranteed to be meaningful. ``void`` functions have an empty result parameter.
     The default handler is:
 
@@ -44,7 +44,7 @@ This file can be included through::
 
     .. warning::
 
-        You should only really use this if you have absolute idea of what you're doing.
+        You should only really use this if you absolutely know what you're doing.
 
 .. class:: error
 

@@ -5,7 +5,7 @@ Installation
 
 ``gum`` is header only, and as a result of that installation is incredibly easy. In fact, there is no need to explicitly
 install anything. The installation step mainly involves putting the files in the default search paths of the compiler
-which would allow you to write ``<include>`` instead of ``"include"`` without having to specify the compiler where they
+which would allow you to write ``<include>`` instead of ``"include"`` without having to specify to the compiler where they
 are. If you don't want this, you're free to skip this section.
 
 .. _gum-supported-compilers:
@@ -72,7 +72,7 @@ After that, the 'installation' should be over.
 
 Doing these steps through the command line are as follows::
 
-    $ setx CPATH C:\``gum``;%CPATH%
+    $ setx CPATH C:\gum;%CPATH%
 
 Note that the ``setx`` command is only available for Windows Vista and higher.
 
@@ -83,7 +83,7 @@ Installation on Linux or Mac OS
 
 On Linux and Mac OS, installation is relatively simple. Rather than fiddling around with environment variables,
 many compilers (GCC, Clang, etc) tend to have /usr/include and /usr/local/include as the default
-include search paths. You can do this as follows (assuming it's installed in ~/``gum``)::
+include search paths. You can do this as follows (assuming it's installed in ~/gum)::
 
-    $ cd ~/``gum``
-    $ cp -r ``gum`` /usr/local/include
+    $ cd ~/gum
+    $ cp -r gum /usr/local/include
