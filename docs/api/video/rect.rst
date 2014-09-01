@@ -26,8 +26,7 @@ These files can be included through::
     :inherits: SDL_Rect
 
     Extends the basic ``SDL_Rect`` class to have a more object oriented API.
-    By taking its address, it can be converted into ``SDL_Rect*``, allowing you
-    to use it with the SDL C API.
+    By taking its address, it can be converted into ``SDL_Rect*``.
 
     .. member:: int x
 
@@ -80,7 +79,7 @@ These files can be included through::
 
     Extends ``SDL_Point`` to have full vector semantics with helper
     functions that aid in vector operations. By taking its address, you can get the original
-    ``SDL_Point*`` for use with the SDL C API.
+    ``SDL_Point*``.
 
     .. function:: constexpr vector() noexcept
 

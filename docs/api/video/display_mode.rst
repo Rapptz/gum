@@ -8,8 +8,8 @@ Window Display Modes
 
 .. |error| replace:: :ref:`gum-core-error`
 
-SDL offers a way to query the display mode of a display (monitor, etc) that is proper for a :class:`window`. ``gum``
-offers a way to wrap this up in a way that doesn't deal with loops or counters.
+SDL offers a way to query the display mode of a display that is proper for a :class:`window`. ``gum``
+wraps this functionality in an easy to use way.
 
 This file can be included through::
 
@@ -26,8 +26,7 @@ This file can be included through::
     :inherits: SDL_DisplayMode
 
     A class with a mostly static interface meant to query certain display modes. By taking
-    its address, it allows you to get the underlying ``SDL_DisplayMode*`` for use with the
-    SDL C API.
+    its address, you can get the underlying ``SDL_DisplayMode*``.
 
     .. member:: uint32_t format
 
