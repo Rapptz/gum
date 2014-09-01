@@ -138,7 +138,7 @@ These files can be included through::
 .. function:: constexpr int determinant(const vector& a, const vector& b) noexcept
 
     Returns the determinant of the two vectors. The equations for this calculation
-    are given below.
+    are:
 
     .. math::
         :nowrap:
@@ -150,15 +150,21 @@ These files can be included through::
 
 .. function:: int distance_squared(const vector& a, const vector& b) noexcept
 
-    Returns the squared distance between the two vectors. Calculated through
-    :math:`(\vec{a}_x - \vec{b}_x)^2 + (\vec{a}_y - \vec{b}_y)^2`
+    Returns the squared distance between the two vectors. The equation for this calculation is:
+    
+    .. math::
+
+        (\vec{a}_x - \vec{b}_x)^2 + (\vec{a}_y - \vec{b}_y)^2
 .. function:: double distance(const vector& a, const vector& b) noexcept
 
-    Returns the distance between two vectors. Calculated through
-    :math:`\sqrt{(\vec{a}_x - \vec{b}_x)^2 + (\vec{a}_y - \vec{b}_y)^2}`
+    Returns the distance between two vectors. The equation for this calculation is:
+
+    .. math::
+
+        \sqrt{(\vec{a}_x - \vec{b}_x)^2 + (\vec{a}_y - \vec{b}_y)^2}
 .. function:: double angle_between(const vector& a, const vector& b) noexcept
 
-    Returns the angle between two vectors. The result is in radians. Calculated through the equation below.
+    Returns the angle between two vectors in radians. The equation for this calculation is:
 
     .. math::
 
@@ -166,7 +172,7 @@ These files can be included through::
 .. function:: double direction(const vector& a, const vector& b) noexcept
 
     Calculates the direction of the vector. The direction is given by the angle it makes
-    with a horizontal line. It is calculated with the following equation:
+    with a horizontal line. The equation for this calculation is:
 
     .. math::
 

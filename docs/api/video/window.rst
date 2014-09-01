@@ -38,10 +38,10 @@ follows:
 
     .. member:: static const auto npos
 
-        Defines a position that is undefined. Equivalent to ``SDL_WINDOWPOS_UNDEFINED``.
+        Defines an undefined position. Equivalent to ``SDL_WINDOWPOS_UNDEFINED``.
     .. member:: static const auto centered
 
-        Defines a position that is centered. Equivalent to ``SDL_WINDOWPOS_CENTERED``.
+        Defines a centered position. Equivalent to ``SDL_WINDOWPOS_CENTERED``.
     .. type:: enum flags
 
         Defines the flags that are used for initialisation of the window. These
