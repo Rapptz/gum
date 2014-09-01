@@ -24,5 +24,6 @@
 #include "video/rect.hpp"
 #include "video/vector.hpp"
 #include "video/window.hpp"
+#include "video/display_mode.hpp"
 
 #endif // GUM_VIDEO_HPP

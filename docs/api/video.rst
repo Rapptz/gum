@@ -14,4 +14,5 @@ Contents:
     video/colour
     video/window
     video/rect
+    video/display_mode
 
