@@ -22,7 +22,7 @@
 
 #include <SDL_rect.h>
 
-namespace sdlpp {
+namespace sdl {
 struct rect : public SDL_Rect {
     constexpr rect() noexcept: SDL_Rect{0, 0, 0, 0} {}
     constexpr rect(int x, int y, int w, int h) noexcept: SDL_Rect{x, y, w, h} {}
@@ -68,6 +68,6 @@ constexpr bool operator<=(const rect& lhs, const rect& rhs) {
 constexpr bool operator>=(const rect& lhs, const rect& rhs) {
     return !(lhs < rhs);
 }
-} // sdlpp
+} // sdl
 
 #endif // GUM_VIDEO_RECT_HPP
