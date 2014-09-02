@@ -21,6 +21,7 @@
 #define GUM_VIDEO_WINDOW_HPP
 
 #include "../core/error.hpp"
+#include "traits.hpp"
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <memory>
@@ -107,6 +108,12 @@ public:
 
     SDL_Renderer* renderer() const noexcept {
         return render.get();
+    }
+
+    template<typename Drawable>
+    void draw(Drawable& drawable) {
+        static_assert(is_renderer_drawable<Drawable>::value, "Must provide a void draw(SDL_Renderer*) member function");
+        drawable.draw(render.get());
     }
 
     float brightness() const noexcept {

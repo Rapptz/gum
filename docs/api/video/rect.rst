@@ -3,7 +3,7 @@
 .. namespace:: sdl
 .. _gum-video-rect:
 
-Rectangles, Points, and Vectors
+Rectangles  and Vectors
 =================================
 
 .. |rect| replace:: :class:`rect`
@@ -151,7 +151,7 @@ These files can be included through::
 .. function:: int distance_squared(const vector& a, const vector& b) noexcept
 
     Returns the squared distance between the two vectors. The equation for this calculation is:
-    
+
     .. math::
 
         (\vec{a}_x - \vec{b}_x)^2 + (\vec{a}_y - \vec{b}_y)^2

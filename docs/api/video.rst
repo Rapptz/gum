@@ -13,6 +13,7 @@ Contents:
 
     video/colour
     video/window
+    video/traits
     video/rect
     video/display_mode
-
+    video/rectangle

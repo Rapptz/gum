@@ -17,14 +17,27 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_VIDEO_HPP
-#define GUM_VIDEO_HPP
+#ifndef GUM_VIDEO_TRAITS_HPP
+#define GUM_VIDEO_TRAITS_HPP
 
-#include "video/colour.hpp"
-#include "video/rect.hpp"
-#include "video/vector.hpp"
-#include "video/window.hpp"
-#include "video/display_mode.hpp"
-#include "video/rectangle.hpp"
+#include <type_traits>
+#include <utility>
 
-#endif // GUM_VIDEO_HPP
+// forward declarations
+struct SDL_Renderer;
+
+namespace sdl {
+namespace detail {
+struct is_renderer_drawable_impl {
+    template<typename T, typename U = decltype(std::declval<T>().draw(std::declval<SDL_Renderer*>()))>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+} // detail
+
+template<typename Drawable>
+struct is_renderer_drawable : decltype(detail::is_renderer_drawable_impl::test<Drawable>(0)) {};
+} // sdl
+
+#endif // GUM_VIDEO_TRAITS_HPP

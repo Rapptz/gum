@@ -108,6 +108,11 @@ follows:
     .. function:: void clear(const colour& c)
 
         Clears the window with the specified :class:`colour`.
+    .. function:: void draw(Drawable& drawable)
+
+        Draws a drawable type. This delegates over the rendering to the appropriate
+        member function. See :ref:`gum-video-traits` for more information. Note that
+        ``Drawable`` is a template type, i.e. ``template<typename Drawable>``.
     .. function:: SDL_Window* data() const noexcept
 
         Returns the underlying pointer to the ``SDL_Window`` structure.
