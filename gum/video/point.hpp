@@ -17,15 +17,33 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_VIDEO_HPP
-#define GUM_VIDEO_HPP
+#ifndef GUM_VIDEO_POINT_HPP
+#define GUM_VIDEO_POINT_HPP
 
-#include "video/colour.hpp"
-#include "video/rect.hpp"
-#include "video/vector.hpp"
-#include "video/window.hpp"
-#include "video/display_mode.hpp"
-#include "video/rectangle.hpp"
-#include "video/point.hpp"
+#include "colour.hpp"
+#include <SDL_rect.h>
+#include <SDL_render.h>
 
-#endif // GUM_VIDEO_HPP
+namespace sdl {
+struct point : SDL_Point {
+private:
+    colour c;
+public:
+    point(int x = 0, int y = 0) noexcept: SDL_Point{x, y} {}
+
+    void fill(colour c) noexcept {
+        this->c = std::move(c);
+    }
+
+    colour fill() const noexcept {
+        return c;
+    }
+
+    void draw(SDL_Renderer* render) {
+        SDL_SetRenderDrawColor(render, c.r, c.g, c.b, c.a);
+        SDL_RenderDrawPoint(render, x, y);
+    }
+};
+} // sdl
+
+#endif // GUM_VIDEO_POINT_HPP

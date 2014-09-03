@@ -23,6 +23,7 @@
 #include "rect.hpp"
 #include "vector.hpp"
 #include "colour.hpp"
+#include <SDL_render.h>
 
 namespace sdl {
 struct rectangle {

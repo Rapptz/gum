@@ -17,3 +17,4 @@ Contents:
     video/rect
     video/display_mode
     video/rectangle
+    video/point
