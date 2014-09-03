@@ -6,7 +6,7 @@ Drawable Rectangles
 ======================
 
 A drawable shape that represents a rectangle. This shouldn't be confused with :class:`rect`. Although the two
-are similar, :class:`rect` is used to represent a regular triangle while :class:`rectangle` is used to represent a
+are similar, :class:`rect` is used to represent a rectangle object while :class:`rectangle` is used to represent a
 rectangle that could be drawn to the screen.
 
 This file can be included through::
