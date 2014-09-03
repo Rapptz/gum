@@ -15,6 +15,11 @@ This file can be included through::
 
 .. class:: point
 
+    :inherits: SDL_Point
+
+    This class is an extension to ``SDL_Point``. By taking its address you can get the
+    underlying ``SDL_Point*``.
+
     .. member:: int x
 
         The x position. A negative number results in undefined behaviour.
@@ -27,7 +32,7 @@ This file can be included through::
     .. function:: void fill(colour c) noexcept
                   colour fill() const noexcept
 
-        Retrieves or specifies the colour to use when rendering the point.
+        Retrieves or specifies the colour to use when rendering the point. Default colour is white.
     .. function:: void draw(SDL_Renderer* render)
 
         Draws the point using a hardware accelerated renderer. This allows

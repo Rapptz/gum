@@ -27,5 +27,6 @@
 #include "video/display_mode.hpp"
 #include "video/rectangle.hpp"
 #include "video/point.hpp"
+#include "video/line.hpp"
 
 #endif // GUM_VIDEO_HPP

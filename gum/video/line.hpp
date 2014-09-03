@@ -17,19 +17,49 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_VIDEO_POINT_HPP
-#define GUM_VIDEO_POINT_HPP
+#ifndef GUM_VIDEO_LINE_HPP
+#define GUM_VIDEO_LINE_HPP
 
+#include "vector.hpp"
 #include "colour.hpp"
-#include <SDL_rect.h>
 #include <SDL_render.h>
 
 namespace sdl {
-struct point : SDL_Point {
+struct line {
 private:
+    vector one;
+    vector two;
     colour c = colour::white;
 public:
-    point(int x = 0, int y = 0) noexcept: SDL_Point{x, y} {}
+    line() noexcept = default;
+    line(int x1, int y1, int x2, int y2) noexcept: one{x1, y1}, two{x2, y2} {}
+    line(const vector& one, const vector& two) noexcept: line(one.x, one.y, two.x, two.y) {}
+
+    void first_point(int x, int y) noexcept {
+        one.x = x;
+        one.y = y;
+    }
+
+    void first_point(const vector& v) noexcept {
+        first_point(v.x, v.y);
+    }
+
+    vector first_point() const noexcept {
+        return one;
+    }
+
+    void second_point(int x, int y) noexcept {
+        two.x = x;
+        two.y = y;
+    }
+
+    void second_point(const vector& v) noexcept {
+        second_point(v.x, v.y);
+    }
+
+    vector second_point() const noexcept {
+        return two;
+    }
 
     void fill(colour c) noexcept {
         this->c = std::move(c);
@@ -41,9 +71,9 @@ public:
 
     void draw(SDL_Renderer* render) {
         SDL_SetRenderDrawColor(render, c.r, c.g, c.b, c.a);
-        SDL_RenderDrawPoint(render, x, y);
+        SDL_RenderDrawLine(render, one.x, one.y, two.x, two.y);
     }
 };
 } // sdl
 
-#endif // GUM_VIDEO_POINT_HPP
+#endif // GUM_VIDEO_LINE_HPP

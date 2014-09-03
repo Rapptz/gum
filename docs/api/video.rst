@@ -18,3 +18,4 @@ Contents:
     video/display_mode
     video/rectangle
     video/point
+    video/line
