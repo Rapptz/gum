@@ -22,6 +22,7 @@
 
 #include "../core/error.hpp"
 #include "traits.hpp"
+#include "vector.hpp"
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <memory>
@@ -64,7 +65,7 @@ public:
     static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
     static const auto centered = SDL_WINDOWPOS_CENTERED;
 
-    enum : uint32_t {
+    enum _ : uint32_t {
         fullscreen         = SDL_WINDOW_FULLSCREEN,
         fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
         opengl             = SDL_WINDOW_OPENGL,
@@ -134,12 +135,110 @@ public:
         return SDL_GetWindowFlags(ptr.get());
     }
 
-    void grab_input(bool b) noexcept {
-        SDL_SetWindowGrab(ptr.get(), b == true ? SDL_TRUE : SDL_FALSE);
+    void grab_input(bool b = true) noexcept {
+        SDL_SetWindowGrab(ptr.get(), b ? SDL_TRUE : SDL_FALSE);
     }
 
     bool is_input_grabbed() const noexcept {
         return SDL_GetWindowGrab(ptr.get());
+    }
+
+    void maximum_size(int width, int height) noexcept {
+        SDL_SetWindowMaximumSize(ptr.get(), width, height);
+    }
+
+    void maximum_size(const vector& size) noexcept {
+        maximum_size(size.x, size.y);
+    }
+
+    vector maximum_size() const noexcept {
+        vector result;
+        SDL_GetWindowMaximumSize(ptr.get(), &result.x, &result.y);
+        return result;
+    }
+
+    void minimum_size(int width, int height) noexcept {
+        SDL_SetWindowMinimumSize(ptr.get(), width, height);
+    }
+
+    void minimum_size(const vector& size) noexcept {
+        minimum_size(size.x, size.y);
+    }
+
+    vector minimum_size() const noexcept {
+        vector result;
+        SDL_GetWindowMinimumSize(ptr.get(), &result.x, &result.y);
+        return result;
+    }
+
+    void position(int x, int y) noexcept {
+        SDL_SetWindowPosition(ptr.get(), x, y);
+    }
+
+    void position(const vector& pos) noexcept {
+        position(pos.x, pos.y);
+    }
+
+    vector position() noexcept {
+        vector result;
+        SDL_GetWindowPosition(ptr.get(), &result.x, &result.y);
+        return result;
+    }
+
+    void resize(int width, int height) noexcept {
+        SDL_SetWindowSize(ptr.get(), width, height);
+    }
+
+    void resize(const vector& size) noexcept {
+        resize(size.x, size.y);
+    }
+
+    vector size() const noexcept {
+        vector result;
+        SDL_GetWindowSize(ptr.get(), &result.x, &result.y);
+        return result;
+    }
+
+    std::string title() const noexcept {
+        return SDL_GetWindowTitle(ptr.get());
+    }
+
+    void title(const std::string& str) noexcept {
+        SDL_SetWindowTitle(ptr.get(), str.c_str());
+    }
+
+    void show() noexcept {
+        SDL_ShowWindow(ptr.get());
+    }
+
+    void hide() noexcept {
+        SDL_HideWindow(ptr.get());
+    }
+
+    void maximise() noexcept {
+        SDL_MaximizeWindow(ptr.get());
+    }
+
+    void minimise() noexcept {
+        SDL_MinimizeWindow(ptr.get());
+    }
+
+    void restore() noexcept {
+        SDL_RestoreWindow(ptr.get());
+    }
+
+    void raise() noexcept {
+        SDL_RaiseWindow(ptr.get());
+    }
+
+    void bordered(bool b = true) noexcept {
+        SDL_SetWindowBordered(ptr.get(), b ? SDL_TRUE : SDL_FALSE);
+    }
+
+    void to_fullscreen(bool b = true) {
+        if(SDL_SetWindowFullscreen(ptr.get(), SDL_WINDOW_FULLSCREEN_DESKTOP)) {
+            GUM_ERROR_HANDLER();
+        }
     }
 
     void close() noexcept {

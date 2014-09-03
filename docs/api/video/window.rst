@@ -6,6 +6,7 @@ Window Management
 ===================
 
 .. |error| replace:: :ref:`gum-core-error`
+.. |window| replace:: :class:`window`
 
 SDL has the ability to create windows easily regardless of the platform used.
 ``gum`` simplifies this even further by giving ``SDL_Window*`` a more object oriented API that interacts
@@ -141,13 +142,68 @@ follows:
         last in the batch of draw calls.
     .. function:: uint32_t id() const noexcept
 
-        Returns an integer ID associated with the Window.
+        Returns an integer ID associated with the window.
     .. function:: uint32_t flags() const noexcept
 
-        Returns the associated :type:`window::flags` with the Window.
-    .. function:: void grab_input(bool b) noexcept
+        Returns the associated :type:`window::flags` with the window.
+    .. function:: void grab_input(bool b = true) noexcept
 
         Requests for input to be grabbed to the window. This also grabs mouse input.
     .. function:: bool is_input_grabbed() const noexcept
 
         Returns ``true`` if the input is grabbed to the window, ``false`` otherwise.
+    .. function:: void maximum_size(int width, int height) noexcept
+                  void maximum_size(const vector& size) noexcept
+                  vector maximum_size() const noexcept
+
+        Retrieves or specifies the maximum size allowed for the window. For the :class:`vector` overload,
+        the ``x`` member specifies ``width``, while ``y`` specifies ``height``.
+    .. function:: void minimum_size(int width, int height) noexcept
+                  void minimum_size(const vector& size) noexcept
+                  vector minimum_size() const noexcept
+
+        Retrieves or specifies the minimum size allowed for the window. For the :class:`vector` overload,
+        the ``x`` member specifies ``width``, while ``y`` specifies ``height``.
+    .. function:: void position(int x, int y) noexcept
+                  void position(const vector& pos) noexcept
+                  vector position() noexcept
+
+        Retrieves of specifies the position of the window.
+    .. function:: void resize(int width, int height) noexcept
+                  void resize(const vector& size) noexcept
+
+        Resizes the window to a new size. For the :class:`vector` overload, the ``x`` member specifies
+        the width, while ``y`` specifies the height.
+    .. function:: vector size() const noexcept
+
+        Returns the size of the window. The ``x`` member of the :class:`vector` specifies
+        the width, while the ``y`` member specifies the height.
+    .. function:: void title(const std::string& str) noexcept
+                  std::string title() const noexcept
+
+        Retrieves of specifies the title for the window. SDL expects the input to be in UTF-8.
+    .. function:: void show() noexcept
+                  void hide() noexcept
+
+        Shows or hide the window.
+    .. function:: void maximise() noexcept
+                  void minimise() noexcept
+                  void restore()  noexcept
+
+        Maximises or minimises the window, i.e. make the window as small or as big as possible.
+        The ``restore`` function restores the window back to its original state prior to minimising
+        or maximising.
+    .. function:: void raise() noexcept
+
+        Raises the window to the top and grabs input focus.
+    .. function:: void bordered(bool b = true) noexcept
+
+        Adds or removes the border of a window. This has no effect if the window is fullscreen.
+        ``true`` specifies to add a border, and ``false`` specifies to remove the border.
+    .. function:: void to_fullscreen(bool b = true)
+
+        Makes a window fullscreen or windowed. The window made fullscreen through the use
+        of ``SDL_WINDOW_FULLSCREEN_DESKTOP``. Passing ``true`` makes the window fullscreen,
+        passing ``false`` makes it windowed.
+
+        If this function fails, then the error handler is called. See |error|.
