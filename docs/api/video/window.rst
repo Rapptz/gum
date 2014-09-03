@@ -46,7 +46,7 @@ follows:
 
         Defines the flags that are used for initialisation of the window. These
         are the same as the ``SDL_WINDOW_*`` flags except turned lower case and into
-        snake_case.
+        snake_case. Note that this enum is anonymous.
 
         .. c:var:: fullscreen
 
@@ -139,3 +139,15 @@ follows:
 
         Displays the rendering to the screen. Note that this function should be called
         last in the batch of draw calls.
+    .. function:: uint32_t id() const noexcept
+
+        Returns an integer ID associated with the Window.
+    .. function:: uint32_t flags() const noexcept
+
+        Returns the associated :type:`window::flags` with the Window.
+    .. function:: void grab_input(bool b) noexcept
+
+        Requests for input to be grabbed to the window. This also grabs mouse input.
+    .. function:: bool is_input_grabbed() const noexcept
+
+        Returns ``true`` if the input is grabbed to the window, ``false`` otherwise.

@@ -64,7 +64,7 @@ public:
     static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
     static const auto centered = SDL_WINDOWPOS_CENTERED;
 
-    enum flags : uint32_t {
+    enum : uint32_t {
         fullscreen         = SDL_WINDOW_FULLSCREEN,
         fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
         opengl             = SDL_WINDOW_OPENGL,
@@ -124,6 +124,22 @@ public:
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
             GUM_ERROR_HANDLER();
         }
+    }
+
+    int id() const noexcept {
+        return SDL_GetWindowID(ptr.get());
+    }
+
+    uint32_t flags() const noexcept {
+        return SDL_GetWindowFlags(ptr.get());
+    }
+
+    void grab_input(bool b) noexcept {
+        SDL_SetWindowGrab(ptr.get(), b == true ? SDL_TRUE : SDL_FALSE);
+    }
+
+    bool is_input_grabbed() const noexcept {
+        return SDL_GetWindowGrab(ptr.get());
     }
 
     void close() noexcept {
