@@ -11,4 +11,5 @@ Contents:
 .. toctree::
     :maxdepth: 1
 
+    input/event
     input/mouse
