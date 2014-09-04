@@ -52,7 +52,7 @@ This file can be included through::
 
     A struct that represents the runtime version information of SDL.
     The interface requires instantiation but is purely public, similar
-    to ``SDL_version``.
+    to :sdl:`version`.
 
     .. member:: uint8_t major
 
@@ -66,4 +66,4 @@ This file can be included through::
     .. function:: linked_version() noexcept
 
         Default constructor that initialises the version information
-        as if calling ``SDL_GetVersion``.
+        as if calling :sdl:`GetVersion`.

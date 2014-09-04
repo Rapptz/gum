@@ -45,5 +45,5 @@ This file can be included through::
 
     Returns the position of the mouse relative to the focused window. You can grab
     the focus of the mouse with :func:`window::grab_input`. As a caveat, this returns
-    (0, 0) after the initial call if events haven't been pumped using ``SDL_PumpEvent``.
+    (0, 0) after the initial call if events haven't been pumped using :sdl:`PumpEvent`.
     This will be fixed in the future.

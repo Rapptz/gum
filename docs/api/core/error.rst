@@ -5,7 +5,7 @@
 Error Handling
 =================
 
-SDL offers basic error handling through ``SDL_GetError``. ``gum`` provides a more idiomatic method for error handling. When an error occurs in C++, the error is thrown as an exception and the user is responsible
+SDL offers basic error handling through :sdl:`GetError`. ``gum`` provides a more idiomatic method for error handling. When an error occurs in C++, the error is thrown as an exception and the user is responsible
 for handling the error. However, sometimes this isn't needed and sometimes you want to interact with the errors yourself.
 ``gum`` offers a way to do that through macros.
 
@@ -21,7 +21,7 @@ This file can be included through::
 .. c:macro:: GUM_NO_EXCEPTIONS
 
     If this macro is defined, no exceptions are thrown and the error handler
-    is set to use ``SDL_Log`` instead.
+    is set to use :sdl:`Log` instead.
 .. c:macro:: GUM_ERROR_HANDLER(result)
 
     If finer gratuity is needed for error handling, you can define this macro with an
@@ -54,8 +54,8 @@ This file can be included through::
 
     .. function:: error()
 
-        An exception with ``SDL_GetError`` as the string.
-        Calls ``SDL_ClearError`` to clean up the error afterwards.
+        An exception with :sdl:`GetError` as the string.
+        Calls :sdl:`ClearError` to clean up the error afterwards.
     .. function:: error(const std::string& str)
 
         An exception with a custom string.
@@ -66,5 +66,5 @@ This file can be included through::
 
 .. function:: std::string last_error() noexcept
 
-    Returns the result of ``SDL_GetError``. This function calls
-    ``SDL_ClearError`` right afterwards.
+    Returns the result of :sdl:`GetError`. This function calls
+    :sdl:`ClearError` right afterwards.

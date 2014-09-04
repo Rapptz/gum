@@ -26,7 +26,7 @@ This file can be included through::
     :inherits: SDL_DisplayMode
 
     A class with a mostly static interface meant to query certain display modes. By taking
-    its address, you can get the underlying ``SDL_DisplayMode*``.
+    its address, you can get the underlying pointer to :sdl:`DisplayMode`.
 
     .. member:: uint32_t format
 
@@ -46,7 +46,7 @@ This file can be included through::
         If an error occurs, the error handler is invoked. See |error|.
     .. function:: static display_mode desktop(int index = 0)
 
-        Returns the desktop display mode for the current display as if calling ``SDL_GetDesktopDisplayMode``.
+        Returns the desktop display mode for the current display as if calling :sdl:`GetDesktopDisplayMode`.
         A display index of 0 is the main display. If an error occurs, the error handler is invoked. See |error|.
     .. function:: static display_mode closest(const display_mode& to, int index = 0)
                   static display_mode closest(int width, int height, int index = 0)

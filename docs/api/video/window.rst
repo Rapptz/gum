@@ -120,7 +120,7 @@ follows:
 
         .. attention::
 
-            Calling ``SDL_DestroyWindow`` on the returned pointer will lead to
+            Calling :sdl:`DestroyWindow` on the returned pointer will lead to
             a double delete. Do not do it. Setting it to null will leak memory. Only
             use this function if you know what you're doing.
     .. function:: SDL_Renderer* renderer() const noexcept
@@ -129,7 +129,7 @@ follows:
 
         .. attention::
 
-            Calling ``SDL_DestroyRenderer`` on the returned pointer will lead to
+            Calling :sdl:`DestroyRenderer` on the returned pointer will lead to
             a double delete. Do not do it. Setting it to null will leak memory. Only
             use this function if you know what you're doing.
     .. function:: void close() noexcept

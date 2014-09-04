@@ -5,7 +5,7 @@
 Drawable Points
 ==================
 
-A drawable point that extends ``SDL_Point``. Used for drawing a single pixel in the screen.
+A drawable point that extends :sdl:`Point`. Used for drawing a single pixel in the screen.
 
 This file can be included through::
 
@@ -17,8 +17,8 @@ This file can be included through::
 
     :inherits: SDL_Point
 
-    This class is an extension to ``SDL_Point``. By taking its address you can get the
-    underlying ``SDL_Point*``.
+    This class is an extension to :sdl:`Point`. By taking its address you can get the
+    underlying pointer to :sdl:`Point`.
 
     .. member:: int x
 

@@ -9,11 +9,11 @@ Initialisation
 .. |error| replace:: :ref:`gum-core-error`
 
 As many are aware, SDL requires initialisation of its internal subsystems. Mainly, you
-initialise the subsystems you need, and then at the end of the program you call ``SDL_Quit``.
+initialise the subsystems you need, and then at the end of the program you call :sdl:`Quit`.
 ``gum`` provides a RAII wrapper for SDL initialisation in the form of the |init| class.
 
 It also defines all the ``SDL_INIT_*`` flags through a nested enum in the class to be more 'C++-like'.
-Just like ``SDL_Init``, it should only be called once.
+Just like :sdl:`Init`, it should only be called once.
 
 .. warning::
 
@@ -73,11 +73,11 @@ This file can be included through::
         it just initialises the video subsystem though you
         should specify whichever you want.
 
-        If ``SDL_Init`` returns a value less than zero, the error handler is invoked.
+        If :sdl:`Init` returns a value less than zero, the error handler is invoked.
         See |error|.
     .. function:: ~init()
 
-        Calls ``SDL_Quit`` to quit all the initialised subsystems.
+        Calls :sdl:`Quit` to quit all the initialised subsystems.
     .. function:: void quit() noexcept
                   void quit(uint32_t subsystem) noexcept
 
@@ -87,8 +87,8 @@ This file can be included through::
 
         Initialises a subsystem by the given flag.
 
-        If ``SDL_InitSubSystem`` returns a value less than zero, the error handler is invoked.
+        If :sdl:`InitSubSystem` returns a value less than zero, the error handler is invoked.
         See |error|.
     .. function:: bool was_initialised(uint32_t subsystem = flags::video) const noexcept
 
-        Checks if a subsystem is initialised. Delegates the work over to ``SDL_WasInit``.
+        Checks if a subsystem is initialised. Delegates the work over to :sdl:`WasInit`.

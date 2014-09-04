@@ -25,8 +25,8 @@ These files can be included through::
 
     :inherits: SDL_Rect
 
-    Extends the basic ``SDL_Rect`` class to have a more object oriented API.
-    By taking its address, it can be converted into ``SDL_Rect*``.
+    Extends the basic :sdl:`Rect` class to have a more object oriented API.
+    By taking its address, it can be converted into a pointer to :sdl:`Rect`.
 
     .. member:: int x
 
@@ -52,12 +52,12 @@ These files can be included through::
     .. function:: bool empty() const noexcept
 
         Checks if the area of the rectangle is zero. This function uses
-        ``SDL_RectEmpty`` internally.
+        :sdl:`RectEmpty` internally.
 
     .. function:: rect union_with(const rect& other) const noexcept
 
         Returns the union of two rectangles. The union is computed
-        by calling ``SDL_UnionRect``. The union of two rectangles
+        by calling :sdl:`UnionRect`. The union of two rectangles
         is equal to a rectangle that can encompass both rectangles.
 
 .. function:: constexpr bool operator==(const rect& lhs, const rect& rhs)
@@ -77,9 +77,9 @@ These files can be included through::
 
     :inherits: SDL_Point
 
-    Extends ``SDL_Point`` to have full vector semantics with helper
-    functions that aid in vector operations. By taking its address, you can get the original
-    ``SDL_Point*``.
+    Extends :sdl:`Point` to have full vector semantics with helper
+    functions that aid in vector operations. By taking its address, you can get the underlying
+    pointer to :sdl:`Point`.
 
     .. function:: constexpr vector() noexcept
 

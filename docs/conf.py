@@ -29,7 +29,11 @@ import solar_theme
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.pngmath']
+extensions = ['sphinx.ext.pngmath', 'sphinx.ext.extlinks']
+extlinks = {
+    'issue': ('https://github.com/Rapptz/gum/issues/%s', 'issue '),
+    'sdl': ('https://wiki.libsdl.org/SDL_%s', 'SDL_')
+}
 
 pngmath_latex_preamble = r'\usepackage[active]{preview}'
 pngmath_use_preview = True

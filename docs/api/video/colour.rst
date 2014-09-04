@@ -5,8 +5,8 @@
 Colour
 =======
 
-SDL offers an ``SDL_Color`` struct that handles RGBA colours. As an extension, ``gum`` offers a slightly improved
-version of this struct. By taking its address, it can turn into a regular ``SDL_Color*``. This header also
+SDL offers an :sdl:`Color` struct that handles RGBA colours. As an extension, ``gum`` offers a slightly improved
+version of this struct. By taking its address, it can turn into a regular pointer to :sdl:`Color`. This header also
 defines some commonly available colours for use.
 
 This file can be included through::

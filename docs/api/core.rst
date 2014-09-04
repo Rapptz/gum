@@ -16,7 +16,7 @@ Certain functions are available only if the master file is included::
 .. function:: void delay(unsigned ms)
 
     Delays the program for the specified millisecond time. This function uses
-    ``SDL_Delay`` internally so it shares the same pros and cons.
+    :sdl:`Delay` internally so it shares the same pros and cons.
 
 
 Contents:
