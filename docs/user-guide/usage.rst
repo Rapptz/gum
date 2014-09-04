@@ -46,7 +46,7 @@ All the headers and structs can be found in the API reference section.
 Namespace
 -----------
 
-``gum`` uses the ``sdl`` namespace. There are a few subnamespaces such as ``sdl::renderer``, etc.
+``gum`` uses the ``sdl`` namespace. There are a few subnamespaces such as ``sdl::renderer`` and ``sdl::mouse``.
 
 .. _gum-versioning:
 
