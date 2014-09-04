@@ -24,7 +24,6 @@
 #include <SDL.h>
 
 namespace sdl {
-
 struct init {
 private:
     bool has_quit = false;
@@ -78,6 +77,10 @@ public:
         return SDL_WasInit(subsystem);
     }
 };
+
+inline void quit() noexcept {
+    SDL_Quit();
+}
 } // sdl
 
 #endif // GUM_CORE_INIT_HPP

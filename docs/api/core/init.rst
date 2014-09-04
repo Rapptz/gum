@@ -27,6 +27,10 @@ This file can be included through::
 
 .. namespace:: sdl
 
+.. function:: void quit() noexcept
+
+    Calls :sdl:`Quit`. Provided for consistency.
+
 .. class:: init
 
     .. type:: enum flags
