@@ -150,20 +150,20 @@ inline void pump() noexcept {
 }
 } // event_queue
 
-bool poll_event(event& e) noexcept {
+inline bool poll_event(event& e) noexcept {
     return SDL_PollEvent(&e);
 }
 
-bool wait_event(event& e) noexcept {
+inline bool wait_event(event& e) noexcept {
     return SDL_WaitEvent(&e);
 }
 
-bool wait_event_for(event& e, int ms) noexcept {
+inline bool wait_event_for(event& e, int ms) noexcept {
     return SDL_WaitEventTimeout(&e, ms);
 }
 
 template<typename Rep, typename Period>
-bool wait_event_for(event& e, const std::chrono::duration<Rep, Period>& time) noexcept {
+inline bool wait_event_for(event& e, const std::chrono::duration<Rep, Period>& time) noexcept {
     return SDL_WaitEventTimeout(&e, std::chrono::duration_cast<std::chrono::milliseconds>(time).count());
 }
 } // sdl

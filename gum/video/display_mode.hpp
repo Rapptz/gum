@@ -25,7 +25,7 @@
 #include <vector>
 
 namespace sdl {
-int number_of_video_displays() {
+inline int number_of_video_displays() {
     int result = SDL_GetNumVideoDisplays();
     if(result < 1) {
         GUM_ERROR_HANDLER(result);
