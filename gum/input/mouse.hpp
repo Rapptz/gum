@@ -25,7 +25,7 @@
 
 namespace sdl {
 namespace mouse {
-enum class button : char {
+enum button : char {
     left   = SDL_BUTTON_LEFT,
     middle = SDL_BUTTON_MIDDLE,
     right  = SDL_BUTTON_RIGHT,

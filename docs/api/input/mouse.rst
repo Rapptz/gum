@@ -16,7 +16,7 @@ This file can be included through::
 
 .. namespace:: sdl
 
-.. type:: enum class mouse::button
+.. type:: enum button
 
     Represents buttons on the mouse.
 
@@ -41,7 +41,7 @@ This file can be included through::
     Checks if the button specified is currently being pressed. Note that this does not
     query the global mouse state, but rather the state of the focus window. You can grab
     the focus of the mouse with :func:`window::grab_input`.
-.. function:: vector position() noexcept
+.. function:: vector mouse::position() noexcept
 
     Returns the position of the mouse relative to the focused window. You can grab
     the focus of the mouse with :func:`window::grab_input`. As a caveat, this returns
