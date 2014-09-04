@@ -14,3 +14,4 @@ Contents:
 
     core
     video
+    input

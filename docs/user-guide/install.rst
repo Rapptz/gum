@@ -58,7 +58,7 @@ All of them are as if passing ``-I path`` to the compiler.
 * ``C_INCLUDE_PATH`` is used for C only, through invokation of ``gcc``.
 
 Installation through the GUI involves a few steps. For the following examples, the path
-C:\\sdlpp is used as the path containing the headers. Be sure to change it appropriately.
+C:\\gum is used as the path containing the headers. Be sure to change it appropriately.
 
 1. Go to 'My Computer' by using WinKey + E.
 2. Right click an empty area and go to 'Properties'.

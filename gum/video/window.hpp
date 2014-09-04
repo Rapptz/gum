@@ -25,6 +25,7 @@
 #include "vector.hpp"
 #include <SDL_video.h>
 #include <SDL_render.h>
+#include <SDL_mouse.h>
 #include <memory>
 #include <string>
 #include <cstdint>
@@ -139,6 +140,14 @@ public:
         SDL_SetWindowGrab(ptr.get(), b ? SDL_TRUE : SDL_FALSE);
     }
 
+    void mouse_position(int x, int y) noexcept {
+        SDL_WarpMouseInWindow(ptr.get(), x, y);
+    }
+
+    void mouse_position(const vector& pos) noexcept {
+        mouse_position(pos.x, pos.y);
+    }
+
     bool is_input_grabbed() const noexcept {
         return SDL_GetWindowGrab(ptr.get());
     }
@@ -236,7 +245,7 @@ public:
     }
 
     void to_fullscreen(bool b = true) {
-        if(SDL_SetWindowFullscreen(ptr.get(), SDL_WINDOW_FULLSCREEN_DESKTOP)) {
+        if(SDL_SetWindowFullscreen(ptr.get(), b ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0)) {
             GUM_ERROR_HANDLER();
         }
     }

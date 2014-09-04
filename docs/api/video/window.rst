@@ -140,6 +140,11 @@ follows:
 
         Displays the rendering to the screen. Note that this function should be called
         last in the batch of draw calls.
+    .. function:: void mouse_position(int x, int y) noexcept
+                  void mouse_position(const vector& pos) noexcept
+
+        Moves the mouse to the specified position. This function only works if the window currently
+        has the input grabbed, you can grab the input through :func:`window::grab_input`.
     .. function:: uint32_t id() const noexcept
 
         Returns an integer ID associated with the window.
