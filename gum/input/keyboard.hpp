@@ -266,14 +266,14 @@ enum : int32_t {
     kbdillumup        = SDLK_KBDILLUMUP,
     eject             = SDLK_EJECT,
     sleep             = SDLK_SLEEP
-}
+};
 
 inline int32_t from_string(const std::string& str) noexcept {
     return SDL_GetKeyFromName(str.c_str());
 }
 
-inline int32_t from_scan(uint32_t scan_code) noexcept {
-    return SDL_GetKeyFromScancode(scan_code);
+inline int32_t from_scan(int32_t scan_code) noexcept {
+    return SDL_GetKeyFromScancode(static_cast<SDL_Scancode>(scan_code));
 }
 
 inline std::string to_string(int32_t key_code) noexcept {
@@ -287,7 +287,7 @@ inline bool is_pressed(int32_t key_code) noexcept {
 } // key
 
 namespace modifier {
-enum : uint32_t {
+enum : int32_t {
     none     = KMOD_NONE,
     lshift   = KMOD_LSHIFT,
     rshift   = KMOD_RSHIFT,
@@ -303,13 +303,13 @@ enum : uint32_t {
     reserved = KMOD_RESERVED
 };
 
-inline bool is_pressed(uint32_t mod_key) noexcept {
+inline bool is_pressed(int32_t mod_key) noexcept {
     return (SDL_GetModState() & mod_key) == mod_key;
 }
 } // modifier
 
 namespace scan {
-enum : uint32_t {
+enum : int32_t {
     unknown           = SDL_SCANCODE_UNKNOWN,
     a                 = SDL_SCANCODE_A,
     b                 = SDL_SCANCODE_B,
@@ -562,11 +562,11 @@ inline int32_t from_key(int32_t key_code) noexcept {
     return SDL_GetScancodeFromKey(key_code);
 }
 
-inline std::string to_string(uint32_t scan_code) noexcept {
-    return SDL_GetScancodeName(scan_code);
+inline std::string to_string(int32_t scan_code) noexcept {
+    return SDL_GetScancodeName(static_cast<SDL_Scancode>(scan_code));
 }
 
-inline bool is_pressed(uint32_t scan_code) noexcept {
+inline bool is_pressed(int32_t scan_code) noexcept {
     const auto* data = SDL_GetKeyboardState(nullptr);
     return data[scan_code];
 }
