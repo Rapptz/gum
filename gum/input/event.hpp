@@ -79,8 +79,8 @@ enum : uint32_t {
     app_did_enter_background   = SDL_APP_DIDENTERBACKGROUND,
     app_will_enter_foreground  = SDL_APP_WILLENTERFOREGROUND,
     app_did_enter_foreground   = SDL_APP_DIDENTERFOREGROUND,
-    window_event               = SDL_WINDOWEVENT,
-    syswm_event                = SDL_SYSWMEVENT,
+    window                     = SDL_WINDOWEVENT,
+    syswm                      = SDL_SYSWMEVENT,
     key_down                   = SDL_KEYDOWN,
     key_up                     = SDL_KEYUP,
     text_editing               = SDL_TEXTEDITING,
@@ -111,8 +111,8 @@ enum : uint32_t {
     clipboard_update           = SDL_CLIPBOARDUPDATE,
     drop_file                  = SDL_DROPFILE,
     render_targets_reset       = SDL_RENDER_TARGETS_RESET,
-    user_event                 = SDL_USEREVENT,
-    last_event                 = SDL_LASTEVENT
+    user                       = SDL_USEREVENT,
+    last                       = SDL_LASTEVENT
 };
 } // events
 

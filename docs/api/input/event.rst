@@ -135,9 +135,9 @@ The following events have also been renamed.
 +-------------------------------+-------------------------------------+
 | SDL_APP_DIDENTERFOREGROUND    | events\:\:app_did_enter_foreground  |
 +-------------------------------+-------------------------------------+
-| SDL_WINDOWEVENT               | events\:\:window_event              |
+| SDL_WINDOWEVENT               | events\:\:window                    |
 +-------------------------------+-------------------------------------+
-| SDL_SYSWMEVENT                | events\:\:syswm_event               |
+| SDL_SYSWMEVENT                | events\:\:syswm                     |
 +-------------------------------+-------------------------------------+
 | SDL_KEYDOWN                   | events\:\:key_down                  |
 +-------------------------------+-------------------------------------+
@@ -199,9 +199,9 @@ The following events have also been renamed.
 +-------------------------------+-------------------------------------+
 | SDL_RENDER_TARGETS_RESET      | events\:\:render_targets_reset      |
 +-------------------------------+-------------------------------------+
-| SDL_USEREVENT                 | events\:\:user_event                |
+| SDL_USEREVENT                 | events\:\:user                      |
 +-------------------------------+-------------------------------------+
-| SDL_LASTEVENT                 | events\:\:last_event                |
+| SDL_LASTEVENT                 | events\:\:last                      |
 +-------------------------------+-------------------------------------+
 
 
