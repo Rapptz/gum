@@ -12,4 +12,5 @@ Contents:
     :maxdepth: 1
 
     input/event
+    input/keyboard
     input/mouse
