@@ -24,6 +24,7 @@
 #include <SDL_keyboard.h>
 #include <SDL_keycode.h>
 #include <SDL_scancode.h>
+#include <SDL_rect.h>
 
 // SDL's keyboard input is fine, just like the event system.
 // Just wrap them up and provide some consistent renames.
@@ -586,6 +587,10 @@ inline void stop_text_input() noexcept {
 
 inline bool is_text_input_active() noexcept {
     return SDL_IsTextInputActive() == SDL_TRUE;
+}
+
+inline void text_input_rect(SDL_Rect rect) noexcept {
+    SDL_SetTextInputRect(&rect);
 }
 } // sdl
 

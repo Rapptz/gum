@@ -41,6 +41,13 @@ text input.
 .. function:: bool is_text_input_active() noexcept
 
     Checks if text input is active (i.e. if :func:`start_text_input` was called). Calls :sdl:`IsTextInputActive`.
+.. function:: void text_input_rect(SDL_Rect rect) noexcept
+
+    Sets the rectangle that enables text input. Calls :sdl:`SetTextInputRect`.
+
+    .. note::
+
+        Although the signature specifies ``SDL_Rect``, the use of :class:`rect` is also allowed.
 
 .. for some reason, the substitutions aren't working. I put them in manually.
 
