@@ -23,5 +23,6 @@
 #include "input/mouse.hpp"
 #include "input/event.hpp"
 #include "input/keyboard.hpp"
+#include "input/joystick.hpp"
 
 #endif // GUM_INPUT_HPP

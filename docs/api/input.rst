@@ -14,3 +14,4 @@ Contents:
     input/event
     input/keyboard
     input/mouse
+    input/joystick
