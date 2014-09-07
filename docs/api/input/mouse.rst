@@ -5,7 +5,7 @@
 Mouse Support
 ================
 
-SDL offers rudementary mouse support. ``gum`` extends this to be a little more easy to use. Not many facilities
+SDL offers rudimentary mouse support. ``gum`` extends this to be a little more easy to use. Not many facilities
 are currently available, such as creation of a cursor and setting the cursor state. These will be added soon.
 
 Things in this header are defined in the ``sdl::mouse`` subnamespace.
