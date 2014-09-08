@@ -14,6 +14,7 @@ Contents:
     video/colour
     video/window
     video/traits
+    video/texture
     video/rect
     video/display_mode
     video/rectangle
