@@ -38,7 +38,7 @@ struct texture_deleter {
 struct surface_deleter {
     void operator()(SDL_Surface* surface) const noexcept {
         if(surface != nullptr) {
-            SDL_DestroySurface(surface);
+            SDL_FreeSurface(surface);
             surface = nullptr;
         }
     }
@@ -47,7 +47,8 @@ struct surface_deleter {
 struct texture {
 private:
     std::unique_ptr<SDL_Texture, texture_deleter> ptr;
-    std::unique_ptr<SDL_Texture, surface_deleter> surface_ptr;
+    std::unique_ptr<SDL_Surface, surface_deleter> surface_ptr;
+    friend struct window;
 public:
     texture() = default;
     texture(const std::string& filename) {

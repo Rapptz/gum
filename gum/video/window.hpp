@@ -23,11 +23,9 @@
 #include "../core/error.hpp"
 #include "traits.hpp"
 #include "vector.hpp"
-#include "colour.hpp"
+#include "texture.hpp"
 #include <SDL_video.h>
-#include <SDL_render.h>
 #include <SDL_mouse.h>
-#include <memory>
 #include <string>
 #include <cstdint>
 
@@ -67,7 +65,7 @@ public:
     static const auto npos     = SDL_WINDOWPOS_UNDEFINED;
     static const auto centered = SDL_WINDOWPOS_CENTERED;
 
-    enum _ : uint32_t {
+    enum : uint32_t {
         fullscreen         = SDL_WINDOW_FULLSCREEN,
         fullscreen_desktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
         opengl             = SDL_WINDOW_OPENGL,
@@ -127,6 +125,18 @@ public:
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
             GUM_ERROR_HANDLER();
         }
+    }
+
+    void to_texture(texture& tex) const {
+        if(tex.is_texture()) {
+            return;
+        }
+
+        tex.ptr.reset(SDL_CreateTextureFromSurface(renderer(), tex.surface()));
+        if(!tex.is_texture()) {
+            GUM_ERROR_HANDLER();
+        }
+        tex.surface_ptr.reset(nullptr); // delete surface
     }
 
     int id() const noexcept {
