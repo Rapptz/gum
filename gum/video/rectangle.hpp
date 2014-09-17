@@ -30,8 +30,8 @@ struct rectangle {
 private:
     rect out;
     rect shape;
-    colour fill_c = colour::white;
-    colour out_c = colour::white;
+    colour fill_c = colour::white();
+    colour out_c = colour::white();
 
     void update_shape_area() noexcept {
         shape.w = out.w - 2;

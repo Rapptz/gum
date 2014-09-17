@@ -29,7 +29,7 @@ struct line {
 private:
     vector one;
     vector two;
-    colour c = colour::white;
+    colour c = colour::white();
 public:
     line() noexcept = default;
     line(int x1, int y1, int x2, int y2) noexcept: one{x1, y1}, two{x2, y2} {}

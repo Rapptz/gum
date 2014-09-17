@@ -42,15 +42,15 @@ This file can be included through::
 
         Constructs a colour from the given RGBA values.
 
-    .. member:: static const colour red
-                static const colour green
-                static const colour blue
-                static const colour black
-                static const colour white
-                static const colour transparent
-                static const colour yellow
-                static const colour magenta
-                static const colour cyan
+    .. member:: static colour red() noexcept
+                static colour green() noexcept
+                static colour blue() noexcept
+                static colour black() noexcept
+                static colour white() noexcept
+                static colour transparent() noexcept
+                static colour yellow() noexcept
+                static colour magenta() noexcept
+                static colour cyan() noexcept
 
         Defines common colours to use.
 

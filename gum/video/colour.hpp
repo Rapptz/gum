@@ -28,26 +28,52 @@ struct colour : SDL_Color {
     colour() noexcept: SDL_Color{0, 0, 0, 255} {}
     colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) noexcept: SDL_Color{r, g, b, a} {}
 
-    static const colour red;
-    static const colour green;
-    static const colour blue;
-    static const colour black;
-    static const colour white;
-    static const colour transparent;
-    static const colour yellow;
-    static const colour magenta;
-    static const colour cyan;
-};
+    static colour red() noexcept {
+        static const colour red = { 255, 0, 0, 255 };
+        return red;
+    }
 
-const colour colour::red         = { 255, 0, 0, 255 };
-const colour colour::green       = { 0, 255, 0, 255 };
-const colour colour::blue        = { 0, 0, 255, 255 };
-const colour colour::black       = { 0, 0, 0, 255 };
-const colour colour::white       = { 255, 255, 255, 255 };
-const colour colour::transparent = { 0, 0, 0, 0 };
-const colour colour::yellow      = { 255, 255, 0, 255 };
-const colour colour::magenta     = { 255, 0, 255, 255 };
-const colour colour::cyan        = { 0, 255, 255, 255 };
+    static colour green() noexcept {
+        static const colour green = { 0, 255, 0, 255 };
+        return green;
+    }
+
+    static colour blue() noexcept {
+        static const colour blue = { 0, 0, 255, 255 };
+        return blue;
+    }
+
+    static colour black() noexcept {
+        static const colour black = { 0, 0, 0, 255 };
+        return black;
+    }
+
+    static colour white() noexcept {
+        static const colour white = { 255, 255, 255, 255 };
+        return white;
+    }
+
+    static colour transparent() noexcept {
+        static const colour transparent  { 0, 0, 0, 0 };
+        return transparent;
+    }
+
+    static colour yellow() noexcept {
+        static const colour yellow = { 255, 255, 0, 255 };
+        return yellow;
+    }
+
+    static colour magenta() noexcept {
+        static const colour magenta = { 255, 0, 255, 255 };
+        return magenta;
+    }
+
+    static colour cyan() noexcept {
+        static const colour cyan = { 0, 255, 255, 255 };
+        return cyan;
+    }
+
+};
 
 using color = colour;
 } // sdl

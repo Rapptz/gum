@@ -27,7 +27,7 @@
 namespace sdl {
 struct point : SDL_Point {
 private:
-    colour c = colour::white;
+    colour c = colour::white();
 public:
     point(int x = 0, int y = 0) noexcept: SDL_Point{x, y} {}
 

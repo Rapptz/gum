@@ -100,7 +100,7 @@ public:
         return ptr != nullptr;
     }
 
-    void clear(const colour& c = colour::black) {
+    void clear(const colour& c = colour::black()) {
         SDL_SetRenderDrawColor(render.get(), c.r, c.g, c.b, c.a);
         SDL_RenderClear(render.get());
     }
