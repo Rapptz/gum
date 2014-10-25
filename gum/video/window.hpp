@@ -24,6 +24,7 @@
 #include "traits.hpp"
 #include "vector.hpp"
 #include "texture.hpp"
+#include "colour.hpp"
 #include <SDL_video.h>
 #include <SDL_mouse.h>
 #include <string>
