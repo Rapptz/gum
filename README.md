@@ -8,14 +8,10 @@ interface.
 `gum` is currently header only. So there's no build step. The only thing needed to build at the moment is just SDL2. Versions
 lower than SDL2 are not explicitly supported.
 
+You can find a list of things to do under the [issue tracker][issue].
+
+[issue]: https://github.com/Rapptz/gum/issues?q=is%3Aissue+is%3Aopen+milestone%3A%221.0.0%22
+
 ## License
 
 `gum` is licensed with the zlib license similar to SDL 2.
-
-## TODO
-
-- Add `display_mode`
-- Improve `window`
-- Image loading
-
-... and many more.
