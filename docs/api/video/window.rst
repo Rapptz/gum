@@ -145,20 +145,6 @@ follows:
 
         Moves the mouse to the specified position. This function only works if the window currently
         has the input grabbed, you can grab the input through :func:`window::grab_input`.
-    .. function:: void to_texture(texture& tex) const
-
-        Turns a :class:`texture` into an actual :sdl:`Texture`. This function does nothing if
-        :func:`texture::is_texture` is true. After this function is called, :func:`texture::is_texture`
-        will return ``true``, and :func:`texture::is_surface` will return ``false``.
-
-        .. note::
-
-            Calling this function is necessary if you plan on using drawable classes that
-            meet the requirement of :class:`is_renderer_drawable\<T>`. This doesn't apply
-            to drawables that are hardware accelerated shapes such as :class:`rectangle`,
-            :class:`point`, etc.
-
-        If an error occurs, the error handler is called. See |error|.
     .. function:: uint32_t id() const noexcept
 
         Returns an integer ID associated with the window.
