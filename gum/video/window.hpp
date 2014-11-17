@@ -23,7 +23,6 @@
 #include "../core/error.hpp"
 #include "traits.hpp"
 #include "vector.hpp"
-#include "texture.hpp"
 #include "colour.hpp"
 #include <SDL_video.h>
 #include <SDL_mouse.h>
@@ -126,18 +125,6 @@ public:
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
             GUM_ERROR_HANDLER();
         }
-    }
-
-    void to_texture(texture& tex) const {
-        if(tex.is_texture()) {
-            return;
-        }
-
-        tex.ptr.reset(SDL_CreateTextureFromSurface(renderer(), tex.surface()));
-        if(!tex.is_texture()) {
-            GUM_ERROR_HANDLER();
-        }
-        tex.surface_ptr.reset(nullptr); // delete surface
     }
 
     int id() const noexcept {

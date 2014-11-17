@@ -23,59 +23,130 @@
 #include "../core/error.hpp"
 #include <SDL_render.h>
 #include <SDL_surface.h>
-#include <memory>
+#include <utility>
 
 namespace sdl {
-struct texture_deleter {
-    void operator()(SDL_Texture* tex) const noexcept {
-        if(tex != nullptr) {
-            SDL_DestroyTexture(tex);
-            tex = nullptr;
-        }
-    }
-};
-
-struct surface_deleter {
-    void operator()(SDL_Surface* surface) const noexcept {
-        if(surface != nullptr) {
-            SDL_FreeSurface(surface);
-            surface = nullptr;
-        }
-    }
-};
-
 struct texture {
 private:
-    std::unique_ptr<SDL_Texture, texture_deleter> ptr;
-    std::unique_ptr<SDL_Surface, surface_deleter> surface_ptr;
-    friend struct window;
+    union {
+        SDL_Texture* tex;
+        SDL_Surface* sur;
+    } value;
+
+    enum class ptr : char {
+        none,
+        texture,
+        surface
+    } type = none;
 public:
     texture() = default;
-    texture(const std::string& filename) {
+    explicit texture(const std::string& filename) {
         load_file(filename);
     }
 
+    texture(texture&& other) noexcept {
+        switch(other.type) {
+        case ptr::texture:
+            std::swap(value.tex, other.tex);
+            other.tex = nullptr;
+            break;
+        case ptr::surface:
+            std::swap(value.sur, other.sur);
+            other.sur = nullptr;
+            break;
+        default:
+            break;
+        }
+        type = other.type;
+    }
+
+    ~texture() {
+        clear();
+    }
+
+    texture& operator=(texture&& other) noexcept {
+        switch(other.type) {
+        case ptr::texture:
+            std::swap(value.tex, other.tex);
+            other.tex = nullptr;
+            break;
+        case ptr::surface:
+            std::swap(value.sur, other.sur);
+            other.sur = nullptr;
+            break;
+        default:
+            break;
+        }
+        type = other.type;
+        return *this;
+    }
+
     void load_file(const std::string& filename) {
-        surface_ptr.reset(SDL_LoadBMP(filename.c_str()));
-        if(surface_ptr == nullptr) {
+        if(type == ptr::texture) {
+            SDL_DestroyTexture(value.tex);
+        }
+        value.sur = SDL_LoadBMP(filename.c_str());
+        if(value.sur == nullptr) {
             GUM_ERROR_HANDLER();
         }
+
+        type = ptr::surface;
+    }
+
+    template<typename Window>
+    void hardware_accelerate(const Window& win) {
+        if(type != ptr::surface) {
+            return;
+        }
+
+        auto result = SDL_CreateTextureFromSurface(win.renderer(), value.sur);
+        if(result == nullptr) {
+            GUM_ERROR_HANDLER();
+        }
+        SDL_FreeSurface(value.sur);
+        value.tex = result;
+        type = ptr::texture;
+    }
+
+    void clear() noexcept {
+        switch(type) {
+        case ptr::texture:
+            SDL_DestroyTexture(value.tex);
+            break;
+        case ptr::surface:
+            SDL_FreeSurface(value.sur);
+            break;
+        default:
+            break;
+        }
+        type = ptr::none;
     }
 
     bool is_texture() const noexcept {
-        return ptr != nullptr;
+        return type == ptr::texture;
     }
 
     bool is_surface() const noexcept {
-        return surface_ptr != nullptr;
+        return type == ptr::surface;
+    }
+
+    explicit operator bool() const noexcept {
+        switch(type) {
+        case ptr::texture:
+            return value.tex != nullptr;
+        case ptr::surface:
+            return value.sur != nullptr;
+        default:
+            return false;
+        }
     }
 
     SDL_Texture* data() const noexcept {
-        return ptr.get();
+        return value.tex;
     }
 
     SDL_Surface* surface() const noexcept {
-        return surface_ptr.get();
+        return value.sur;
     }
 };
 } // sdl
