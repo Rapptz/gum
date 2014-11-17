@@ -39,9 +39,9 @@ public:
 
 #ifndef GUM_ERROR_HANDLER
 #if defined(GUM_NO_EXCEPTIONS)
-#define GUM_ERROR_HANDLER(result) do { SDL_Log("%s", SDL_GetError()); SDL_ClearError(); return result; } while(0)
+#define GUM_ERROR_HANDLER(str, result) do { ::SDL_Log("%s", str.c_str()); return result; } while(0)
 #else
-#define GUM_ERROR_HANDLER(result) throw error()
+#define GUM_ERROR_HANDLER(str, result) throw ::sdl::error(str)
 #endif // GUM_NO_EXCEPTIONS
 #endif // GUM_ERROR_HANDLER
 } // sdl

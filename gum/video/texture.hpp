@@ -87,7 +87,8 @@ public:
         }
         value.sur = SDL_LoadBMP(filename.c_str());
         if(value.sur == nullptr) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
 
         type = ptr::surface;
@@ -101,7 +102,8 @@ public:
 
         auto result = SDL_CreateTextureFromSurface(win.renderer(), value.sur);
         if(result == nullptr) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
         SDL_FreeSurface(value.sur);
         value.tex = result;

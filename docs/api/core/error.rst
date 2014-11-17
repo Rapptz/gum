@@ -25,20 +25,25 @@ This file can be included through::
 .. c:macro:: GUM_ERROR_HANDLER(result)
 
     If finer gratuity is needed for error handling, you can define this macro with an
-    error handler to use. Note that the macro is called as ``GUM_ERROR_HANDLER(result);`` with
+    error handler to use. Note that the macro is called as ``GUM_ERROR_HANDLER(err, result);`` with
     the trailing semicolon. The result parameter is what the function would return. The return
     value is not guaranteed to be meaningful. ``void`` functions have an empty result parameter.
+
+    The handler's first parameter is an ``std::string`` containing the error string as if called with
+    :func:`last_error` or any appropriate function. If there is no result to return then the macro is called
+    with the empty parameter as if calling ``GUM_ERROR_HANDLER(err,);``.
+
     The default handler is:
 
     .. code-block:: cpp
 
-        throw sdl::error()
+        throw ::sdl::error(err)
 
     However, if :c:macro:`GUM_NO_EXCEPTIONS` is defined, then the handler is changed to:
 
     .. code-block:: cpp
 
-        do { SDL_Log("%s", SDL_GetError()); SDL_ClearError(); return result; } while(0)
+        do { SDL_Log("%s", err.c_str()); return result; } while(0)
 
     You should strive to use these as examples of what to do.
 

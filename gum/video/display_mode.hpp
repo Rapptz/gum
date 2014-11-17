@@ -28,7 +28,8 @@ namespace sdl {
 inline int number_of_video_displays() {
     int result = SDL_GetNumVideoDisplays();
     if(result < 1) {
-        GUM_ERROR_HANDLER(result);
+        auto&& err = last_error();
+        GUM_ERROR_HANDLER(err, result);
     }
     return result;
 }
@@ -38,13 +39,15 @@ struct display_mode : SDL_DisplayMode {
         int count = SDL_GetNumDisplayModes(index);
         std::vector<display_mode> result;
         if(count < 1) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
 
         display_mode mode;
         for(int i = 0; i < count; ++i) {
             if(SDL_GetDisplayMode(index, i, &mode)) {
-                GUM_ERROR_HANDLER(result);
+                auto&& err = last_error();
+                GUM_ERROR_HANDLER(err, result);
             }
             result.push_back(mode);
         }
@@ -55,7 +58,8 @@ struct display_mode : SDL_DisplayMode {
     static display_mode desktop(int index = 0) {
         display_mode result;
         if(SDL_GetDesktopDisplayMode(index, &result)) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -63,7 +67,8 @@ struct display_mode : SDL_DisplayMode {
     static display_mode closest(const display_mode& to, int index = 0) {
         display_mode result;
         if(SDL_GetClosestDisplayMode(index, &to, &result) == nullptr) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -78,7 +83,8 @@ struct display_mode : SDL_DisplayMode {
         source.driverdata = nullptr;
 
         if(SDL_GetClosestDisplayMode(index, &source, &result) == nullptr) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }

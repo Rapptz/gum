@@ -38,7 +38,8 @@ using joystick_guid = SDL_JoystickGUID;
 inline int number_of_joysticks() {
     int x = SDL_NumJoysticks();
     if(x < 0) {
-        GUM_ERROR_HANDLER(x);
+        auto&& err = last_error();
+        GUM_ERROR_HANDLER(err, x);
     }
     return x;
 }
@@ -72,7 +73,8 @@ public:
     joystick() noexcept = default;
     joystick(int index = 0): ptr(SDL_JoystickOpen(index)) {
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
     }
 
@@ -83,7 +85,8 @@ public:
     int16_t axis(int i) const {
         int16_t result = SDL_JoystickGetAxis(ptr.get(), i);
         if(result == 0) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -107,7 +110,8 @@ public:
     int axes() const {
         int result = SDL_JoystickNumAxes(ptr.get());
         if(result < 0) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -115,7 +119,8 @@ public:
     int buttons() const {
         int result = SDL_JoystickNumButtons(ptr.get());
         if(result < 0) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -123,7 +128,8 @@ public:
     int hats() const {
         int result = SDL_JoystickNumHats(ptr.get());
         if(result < 0) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }
@@ -139,7 +145,8 @@ public:
     joystick_id id() const {
         joystick_id result = SDL_JoystickInstanceID(ptr.get());
         if(result == 0) {
-            GUM_ERROR_HANDLER(result);
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err, result);
         }
         return result;
     }

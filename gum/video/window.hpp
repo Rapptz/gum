@@ -86,12 +86,14 @@ public:
     window(const std::string& title, int width, int height, uint32_t flag = 0):
     ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
         render.reset(SDL_CreateRenderer(ptr.get(), -1, renderer::accelerated));
 
         if(render == nullptr) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
     }
 
@@ -124,7 +126,8 @@ public:
 
     void brightness(float bright) {
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
     }
 
@@ -246,7 +249,8 @@ public:
 
     void to_fullscreen(bool b = true) {
         if(SDL_SetWindowFullscreen(ptr.get(), b ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0)) {
-            GUM_ERROR_HANDLER();
+            auto&& err = last_error();
+            GUM_ERROR_HANDLER(err,);
         }
     }
 
