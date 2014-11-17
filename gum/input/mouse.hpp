@@ -20,7 +20,7 @@
 #ifndef GUM_INPUT_MOUSE_HPP
 #define GUM_INPUT_MOUSE_HPP
 
-#include "../video/vector.hpp"
+#include <gum/video/vector.hpp>
 #include <SDL_mouse.h>
 
 namespace sdl {

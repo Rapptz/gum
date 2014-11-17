@@ -20,10 +20,10 @@
 #ifndef GUM_VIDEO_WINDOW_HPP
 #define GUM_VIDEO_WINDOW_HPP
 
-#include "../core/error.hpp"
-#include "traits.hpp"
-#include "vector.hpp"
-#include "colour.hpp"
+#include <gum/core/error.hpp>
+#include <gum/video/traits.hpp>
+#include <gum/video/vector.hpp>
+#include <gum/video/colour.hpp>
 #include <memory>
 #include <SDL_video.h>
 #include <SDL_mouse.h>

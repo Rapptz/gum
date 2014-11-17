@@ -20,7 +20,7 @@
 #ifndef GUM_CORE_INIT_HPP
 #define GUM_CORE_INIT_HPP
 
-#include "error.hpp"
+#include <gum/core/error.hpp>
 #include <SDL.h>
 
 namespace sdl {

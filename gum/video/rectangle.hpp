@@ -20,9 +20,9 @@
 #ifndef GUM_VIDEO_RECTANGLE_HPP
 #define GUM_VIDEO_RECTANGLE_HPP
 
-#include "rect.hpp"
-#include "vector.hpp"
-#include "colour.hpp"
+#include <gum/video/rect.hpp>
+#include <gum/video/vector.hpp>
+#include <gum/video/colour.hpp>
 #include <SDL_render.h>
 
 namespace sdl {

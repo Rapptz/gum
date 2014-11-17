@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_DISPLAY_MODE_HPP
 #define GUM_VIDEO_DISPLAY_MODE_HPP
 
-#include "../core/error.hpp"
+#include <gum/core/error.hpp>
 #include <SDL_video.h>
 #include <vector>
 

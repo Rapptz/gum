@@ -20,9 +20,9 @@
 #ifndef GUM_INPUT_HPP
 #define GUM_INPUT_HPP
 
-#include "input/mouse.hpp"
-#include "input/event.hpp"
-#include "input/keyboard.hpp"
-#include "input/joystick.hpp"
+#include <gum/input/mouse.hpp>
+#include <gum/input/event.hpp>
+#include <gum/input/keyboard.hpp>
+#include <gum/input/joystick.hpp>
 
 #endif // GUM_INPUT_HPP

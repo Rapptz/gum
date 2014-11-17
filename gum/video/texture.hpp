@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_TEXTURE_HPP
 #define GUM_VIDEO_TEXTURE_HPP
 
-#include "../core/error.hpp"
+#include <gum/core/error.hpp>
 #include <SDL_render.h>
 #include <SDL_surface.h>
 #include <utility>

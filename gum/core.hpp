@@ -20,9 +20,9 @@
 #ifndef GUM_CORE_HPP
 #define GUM_CORE_HPP
 
-#include "core/error.hpp"
-#include "core/init.hpp"
-#include "core/version.hpp"
+#include <gum/core/error.hpp>
+#include <gum/core/init.hpp>
+#include <gum/core/version.hpp>
 
 namespace sdl {
 inline void delay(unsigned ms) {

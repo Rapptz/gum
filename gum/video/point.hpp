@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_POINT_HPP
 #define GUM_VIDEO_POINT_HPP
 
-#include "colour.hpp"
+#include <gum/video/colour.hpp>
 #include <SDL_rect.h>
 #include <SDL_render.h>
 

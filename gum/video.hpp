@@ -20,14 +20,14 @@
 #ifndef GUM_VIDEO_HPP
 #define GUM_VIDEO_HPP
 
-#include "video/colour.hpp"
-#include "video/rect.hpp"
-#include "video/vector.hpp"
-#include "video/window.hpp"
-#include "video/display_mode.hpp"
-#include "video/rectangle.hpp"
-#include "video/point.hpp"
-#include "video/texture.hpp"
-#include "video/line.hpp"
+#include <gum/video/colour.hpp>
+#include <gum/video/rect.hpp>
+#include <gum/video/vector.hpp>
+#include <gum/video/window.hpp>
+#include <gum/video/display_mode.hpp>
+#include <gum/video/rectangle.hpp>
+#include <gum/video/point.hpp>
+#include <gum/video/texture.hpp>
+#include <gum/video/line.hpp>
 
 #endif // GUM_VIDEO_HPP

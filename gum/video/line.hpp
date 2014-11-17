@@ -20,8 +20,8 @@
 #ifndef GUM_VIDEO_LINE_HPP
 #define GUM_VIDEO_LINE_HPP
 
-#include "vector.hpp"
-#include "colour.hpp"
+#include <gum/video/vector.hpp>
+#include <gum/video/colour.hpp>
 #include <SDL_render.h>
 
 namespace sdl {
