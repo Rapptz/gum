@@ -37,7 +37,7 @@ private:
         none,
         texture,
         surface
-    } type = none;
+    } type = ptr::none;
 public:
     texture() = default;
     explicit texture(const std::string& filename) {
@@ -47,12 +47,12 @@ public:
     texture(texture&& other) noexcept {
         switch(other.type) {
         case ptr::texture:
-            std::swap(value.tex, other.tex);
-            other.tex = nullptr;
+            std::swap(value.tex, other.value.tex);
+            other.value.tex = nullptr;
             break;
         case ptr::surface:
-            std::swap(value.sur, other.sur);
-            other.sur = nullptr;
+            std::swap(value.sur, other.value.sur);
+            other.value.sur = nullptr;
             break;
         default:
             break;
@@ -67,12 +67,12 @@ public:
     texture& operator=(texture&& other) noexcept {
         switch(other.type) {
         case ptr::texture:
-            std::swap(value.tex, other.tex);
-            other.tex = nullptr;
+            std::swap(value.tex, other.value.tex);
+            other.value.tex = nullptr;
             break;
         case ptr::surface:
-            std::swap(value.sur, other.sur);
-            other.sur = nullptr;
+            std::swap(value.sur, other.value.sur);
+            other.value.sur = nullptr;
             break;
         default:
             break;

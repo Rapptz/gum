@@ -16,7 +16,7 @@ This file can be included through::
 
 .. namespace:: sdl
 
-.. class:: is_renderer_drawable<T>
+.. class:: is_renderer_drawable\<T>
 
     This trait specifies if a type can be drawn using an ``SDL_Renderer*``. In order to meet the trait
     requirement, you must provide a member function with the following prototype and name:

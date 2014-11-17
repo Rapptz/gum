@@ -1,5 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
+.. namespace:: sdl
 .. _gum-video-texture:
 
 Textures
@@ -27,8 +28,6 @@ This file can be included through::
 
     #include <gum/video/texture.hpp>
 
-.. namespace:: sdl
-
 .. class:: texture
 
     Encapsulates an :sdl:`Surface` or :sdl:`Texture`.
@@ -37,12 +36,12 @@ This file can be included through::
 
         Creates an empty texture.
     .. function:: texture(const std::string& filename)
-    .. function:: void load_file(const std::string& filename)
+                  void load_file(const std::string& filename)
 
         Creates a surface through the filename. At the moment, the only image types supported are BMP.
 
         If the image could not be loaded, the error handler is called. See |error|. If it is loaded,
-        this ends in :function:`is_surface` to return ``true``.
+        this ends in :func:`is_surface` to return ``true``.
     .. function:: texture(texture&& other) noexcept
                   texture& operator=(texture&& other) noexcept
 
@@ -79,3 +78,11 @@ This file can be included through::
             meet the requirement of :class:`is_renderer_drawable\<T>`. This doesn't apply
             to drawables that are hardware accelerated shapes such as :class:`rectangle`,
             :class:`point`, etc.
+
+    .. function:: void clear() noexcept
+
+        Releases the :sdl:`Texture` or :sdl:`Surface` being managed.
+    .. function:: explicit operator bool() const noexcept
+
+        Checks if an :sdl:`Texture` or :sdl:`Surface` is being managed, and if so,
+        checks if it is currently not null.
