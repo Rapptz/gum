@@ -15,10 +15,8 @@ Include Layout
 
 ``gum`` includes the SDL dependencies through the usage of angle brackets, e.g. ``#include <SDL_rect.h>``. In theory,
 it is up to the implementation what this means. In practice, this means that the header has to be found either by
-specifying it to the compiler, or it's found through the default include paths.
-
-Internally, ``gum`` includes its other components through the use of quotations, e.g. ``#include "../core/version.hpp"``.
-As a consequence of this, the internal directory structure should **not** be touched or messed around with.
+specifying it to the compiler, or it's found through the default include paths. Internally, ``gum`` includes its other
+components through the same manner.
 
 ``gum`` headers can be found in the ``gum`` subdirectory. Since ``gum`` is split into 'modules', there will be some
 subdirectories that you'd need to access to get to the meat of the library. The modules provided by ``gum`` are as follows:
