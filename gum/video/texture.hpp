@@ -85,11 +85,19 @@ public:
         if(type == ptr::texture) {
             SDL_DestroyTexture(value.tex);
         }
+
+    #ifndef GUM_IMG_DISABLED
+    #define GUM_ERROR_CALL last_img_error()
+        value.sur = IMG_Load(filename.c_str());
+    #else
+    #define GUM_ERROR_CALL last_error()
         value.sur = SDL_LoadBMP(filename.c_str());
+    #endif
         if(value.sur == nullptr) {
-            auto&& err = last_error();
+            auto&& err = GUM_ERROR_CALL;
             GUM_ERROR_HANDLER(err,);
         }
+    #undef GUM_ERROR_CALL
 
         type = ptr::surface;
     }

@@ -7,6 +7,7 @@ Textures
 ===========
 
 .. |error| replace:: :ref:`gum-core-error`
+.. |opt| replace:: :ref:`gum-required-libs`
 
 SDL2 offers an :sdl:`Texture` struct that can be used to create a pixel representation of an image that
 is loaded into VRAM. It also offers :sdl:`Surface` which is similar, but loaded into RAM instead. A big issue with
@@ -38,7 +39,11 @@ This file can be included through::
     .. function:: texture(const std::string& filename)
                   void load_file(const std::string& filename)
 
-        Creates a surface through the filename. At the moment, the only image types supported are BMP.
+        Creates a surface through the filename. At the moment the file types supported are the ones
+        supported by SDL2_image. They are:  ICO(Icon)/CUR(Cursor)/BMP, PNM (PPM/PGM/PBM), XPM,
+        LBM(IFF ILBM), PCX, GIF, JPEG, PNG, TGA, TIFF, and XV. Note that TIFF support is disabled
+        by default. If ``GUM_IMG_DISABLED`` is defined then only BMP is supported.
+        See |opt| for more information.
 
         If the image could not be loaded, the error handler is called. See |error|. If it is loaded,
         this ends in :func:`is_surface` to return ``true``.
