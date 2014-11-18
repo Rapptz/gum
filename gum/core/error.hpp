@@ -20,16 +20,26 @@
 #ifndef GUM_CORE_ERROR_HPP
 #define GUM_CORE_ERROR_HPP
 
+#include <gum/core/config.hpp>
 #include <SDL_error.h>
 #include <SDL_log.h>
 #include <stdexcept>
+#ifndef GUM_IMG_DISABLED
+#include <SDL_image.h>
+#endif
 
 namespace sdl {
-inline std::string last_error() noexcept {
+inline std::string last_error() {
     const char* result = SDL_GetError();
     SDL_ClearError();
     return result;
 }
+
+#ifndef GUM_IMG_DISABLED
+inline std::string last_img_error() {
+    return IMG_GetError(); // for some reason there's no IMG_ClearError()
+}
+#endif
 
 class error : public std::runtime_error {
 public:

@@ -5,6 +5,8 @@
 Error Handling
 =================
 
+.. |opt| replace:: :ref:`gum-required-libs`
+
 SDL offers basic error handling through :sdl:`GetError`. ``gum`` provides a more idiomatic method for error handling. When an error occurs in C++, the error is thrown as an exception and the user is responsible
 for handling the error. However, sometimes this isn't needed and sometimes you want to interact with the errors yourself.
 ``gum`` offers a way to do that through macros.
@@ -69,7 +71,12 @@ This file can be included through::
         Returns the error string.
 
 
-.. function:: std::string last_error() noexcept
+.. function:: std::string last_error()
 
     Returns the result of :sdl:`GetError`. This function calls
     :sdl:`ClearError` right afterwards.
+.. function:: std::string last_img_error()
+
+    Returns the result of ``IMG_GetError()``.
+
+    :optional: Disable with ``GUM_IMG_DISABLED``. See |opt| for more info.

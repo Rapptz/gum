@@ -1,4 +1,3 @@
-// gum
 // Copyright (C) 2014 Rapptz
 
 // This software is provided 'as-is', without any express or implied
@@ -17,50 +16,14 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_CORE_INIT_HPP
-#define GUM_CORE_INIT_HPP
+#ifndef GUM_CORE_CONFIG_HPP
+#define GUM_CORE_CONFIG_HPP
 
-#include <gum/core/error.hpp>
-#include <cstdlib>
-#include <SDL.h>
-#ifndef GUM_IMG_DISABLED
-#include <SDL_image.h>
-#endif
+// provides configuration macros for gum
+#if defined(GUM_RAW_SDL)
+#   if !defined(GUM_IMG_DISABLED)
+#       define GUM_IMG_DISABLED 1
+#   endif
+#endif // disable all
 
-namespace sdl {
-inline void quit() noexcept {
-#ifndef GUM_IMG_DISABLED
-    IMG_Quit();
-#endif
-    SDL_Quit();
-}
-
-#ifndef GUM_IMG_DISABLED
-#define GUM_IMG_DEF IMG_INIT_PNG | IMG_INIT_JPG
-#else
-#define GUM_IMG_DEF 0
-#endif
-
-inline void init(uint32_t sdl = SDL_INIT_EVERYTHING, uint32_t img = GUM_IMG_DEF) {
-    if(SDL_Init(sdl) < 0) {
-        auto&& err = last_error();
-        GUM_ERROR_HANDLER(err,);
-    }
-
-#ifndef GUM_IMG_DISABLED
-    auto img_result = IMG_Init(img);
-    if((img_result & img) != img) {
-        auto&& err = last_img_error();
-        GUM_ERROR_HANDLER(err,);
-    }
-#else
-    (void)img;
-#endif
-
-    std::atexit(::sdl::quit);
-}
-} // sdl
-
-#undef GUM_IMG_DEF
-
-#endif // GUM_CORE_INIT_HPP
+#endif // GUM_CORE_CONFIG_HPP

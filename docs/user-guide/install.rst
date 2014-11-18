@@ -6,7 +6,29 @@ Installation
 ``gum`` is header only, and as a result of that installation is incredibly easy. In fact, there is no need to explicitly
 install anything. The installation step mainly involves putting the files in the default search paths of the compiler
 which would allow you to write ``<include>`` instead of ``"include"`` without having to specify to the compiler where they
-are. If you don't want this, you're free to skip this section.
+are. If you don't want this, you're free to skip the last few sections.
+
+
+.. _gum-required-libs:
+
+Required Libraries
+-----------------------
+
+``gum`` uses certain libraries to get the dependencies needed to have a nicer API. Since sometimes these libraries
+are not provided by the user, you can retroactively disable them through the use of preprocessor macros. Make sure to
+define these macros before including the file or they won't work.
+
++------------+------------------+
+|  Library   | Macro to disable |
++------------+------------------+
+| SDL2       | None. Obviously. |
++------------+------------------+
+| SDL2_image | GUM_IMG_DISABLED |
++------------+------------------+
+
+Note that by using these preprocessor macros then certain parts will obviously not work (e.g. .png loading).
+
+Another macro could be provided to disable all external 3rd dependencies, ``GUM_RAW_SDL``.
 
 .. _gum-supported-compilers:
 
