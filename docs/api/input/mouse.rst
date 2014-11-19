@@ -16,23 +16,23 @@ This file can be included through::
 
 .. namespace:: sdl
 
-.. type:: enum button
+.. enum:: button
 
     Represents buttons on the mouse.
 
-    .. c:var:: left
+    .. enumerator:: left
 
         Represents the left mouse button.
-    .. c:var:: middle
+    .. enumerator:: middle
 
         Represents the middle mouse button.
-    .. c:var:: right
+    .. enumerator:: right
 
         Represents the right mouse button.
-    .. c:var:: x1
+    .. enumerator:: x1
 
         Represents the first extra mouse button.
-    .. c:var:: x2
+    .. enumerator:: x2
 
         Represents the second extra mouse button.
 

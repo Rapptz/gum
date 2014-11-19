@@ -22,18 +22,20 @@ An enumerator is provided in the ``sdl::renderer`` namespace. This is used to st
 for initialisation of the internal ``SDL_Renderer*`` of the :class:`window`. Its values are as
 follows:
 
-.. c:var:: renderer::software
+.. enum:: class renderer
 
-    The renderer would use a software fallback.
-.. c:var:: renderer::accelerated
+    .. enumerator:: software
 
-    The renderer would request hardware acceleration.
-.. c:var:: renderer::present_vsync
+        The renderer would use a software fallback.
+    .. enumerator:: accelerated
 
-    The renderer would enable vsync if available.
-.. c:var:: renderer::target_texture
+        The renderer would request hardware acceleration.
+    .. enumerator:: present_vsync
 
-    The renderer would support rendering to textures.
+        The renderer would enable vsync if available.
+    .. enumerator:: target_texture
+
+        The renderer would support rendering to textures.
 
 .. class:: window
 
@@ -43,40 +45,40 @@ follows:
     .. member:: static const auto centered
 
         Defines a centered position. Equivalent to ``SDL_WINDOWPOS_CENTERED``.
-    .. type:: enum flags
+    .. enum:: unspecified
 
         Defines the flags that are used for initialisation of the window. These
         are the same as the ``SDL_WINDOW_*`` flags except turned lower case and into
         snake_case. Note that this enum is anonymous.
 
-        .. c:var:: fullscreen
+        .. enumerator:: fullscreen
 
             A fullscreen window.
-        .. c:var:: fullscreen_desktop
+        .. enumerator:: fullscreen_desktop
 
             A fullscreen window at desktop resolution.
-        .. c:var:: opengl
+        .. enumerator:: opengl
 
             A window usable with OpenGL.
-        .. c:var:: hidden
+        .. enumerator:: hidden
 
             A window that is not visible.
-        .. c:var:: borderless
+        .. enumerator:: borderless
 
             A borderless window.
-        .. c:var:: resizable
+        .. enumerator:: resizable
 
             A window that can be resized.
-        .. c:var:: minimized
+        .. enumerator:: minimized
 
             A window that starts out minimised.
-        .. c:var:: maximized
+        .. enumerator:: maximized
 
             A window that starts out maximised.
-        .. c:var:: input_grabbed
+        .. enumerator:: input_grabbed
 
             A window that grabs all input focus.
-        .. c:var:: highdpi
+        .. enumerator:: highdpi
 
             A window that supports high-DPI if available.
 
