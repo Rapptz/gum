@@ -44,6 +44,12 @@ public:
         load_file(filename);
     }
 
+    template<typename Window>
+    texture(const std::string& filename, const Window& w) {
+        load_file(filename);
+        hardware_accelerate(w);
+    }
+
     texture(texture&& other) noexcept {
         switch(other.type) {
         case ptr::texture:

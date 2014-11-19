@@ -47,6 +47,9 @@ This file can be included through::
 
         If the image could not be loaded, the error handler is called. See |error|. If it is loaded,
         this ends in :func:`is_surface` to return ``true``.
+    .. function:: texture(const std::string& filename, const Window& w)
+
+        Equivalent to calling :func:`load_file` followed by :func:`hardware_accelerate`.
     .. function:: texture(texture&& other) noexcept
                   texture& operator=(texture&& other) noexcept
 
