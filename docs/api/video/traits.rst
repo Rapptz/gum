@@ -18,6 +18,8 @@ This file can be included through::
 
 .. class:: is_renderer_drawable\<T>
 
+    :inherits: `std::integral_constant <http://en.cppreference.com/w/cpp/types/integral_constant>`_
+
     This trait specifies if a type can be drawn using an ``SDL_Renderer*``. In order to meet the trait
     requirement, you must provide a member function with the following prototype and name:
 

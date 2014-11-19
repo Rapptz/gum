@@ -17,11 +17,18 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_PLATFORM_HPP
-#define GUM_PLATFORM_HPP
+#ifndef GUM_PLATFORM_ENDIAN_HPP
+#define GUM_PLATFORM_ENDIAN_HPP
 
-#include <gum/platform/name.hpp>
-#include <gum/platform/cpu.hpp>
-#include <gum/platform/endian.hpp>
+#include <SDL_endian.h>
+#include <type_traits>
 
-#endif // GUM_PLATFORM_HPP
+namespace sdl {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+struct is_big_endian : std::true_type {};
+#else
+struct is_big_endian : std::false_type {};
+#endif // SDL_BYTEORDER
+} // sdl
+
+#endif // GUM_PLATFORM_ENDIAN_HPP

@@ -15,4 +15,5 @@ Contents:
     :maxdepth: 1
 
     platform/detection
+    platform/endian
 
