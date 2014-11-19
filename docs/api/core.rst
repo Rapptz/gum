@@ -1,6 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-
+.. namespace:: sdl
 .. _gum-core:
 
 Gum Core

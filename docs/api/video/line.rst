@@ -1,5 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
+.. namespace:: sdl
 .. _gum-video-line:
 
 Drawable Lines
