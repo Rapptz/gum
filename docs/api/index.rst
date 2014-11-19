@@ -15,3 +15,4 @@ Contents:
     core
     video
     input
+    platform
