@@ -93,17 +93,13 @@ public:
         }
 
     #ifndef GUM_IMG_DISABLED
-    #define GUM_ERROR_CALL last_img_error()
         value.sur = IMG_Load(filename.c_str());
     #else
-    #define GUM_ERROR_CALL last_error()
         value.sur = SDL_LoadBMP(filename.c_str());
     #endif
         if(value.sur == nullptr) {
-            auto&& err = GUM_ERROR_CALL;
-            GUM_ERROR_HANDLER(err,);
+            GUM_ERROR_HANDLER();
         }
-    #undef GUM_ERROR_CALL
 
         type = ptr::surface;
     }
@@ -116,8 +112,7 @@ public:
 
         auto result = SDL_CreateTextureFromSurface(win.renderer(), value.sur);
         if(result == nullptr) {
-            auto&& err = last_error();
-            GUM_ERROR_HANDLER(err,);
+            GUM_ERROR_HANDLER();
         }
         SDL_FreeSurface(value.sur);
         value.tex = result;

@@ -35,12 +35,6 @@ inline std::string last_error() {
     return result;
 }
 
-#ifndef GUM_IMG_DISABLED
-inline std::string last_img_error() {
-    return IMG_GetError(); // for some reason there's no IMG_ClearError()
-}
-#endif
-
 class error : public std::runtime_error {
 public:
     error(): std::runtime_error(last_error()) {}
@@ -49,9 +43,9 @@ public:
 
 #ifndef GUM_ERROR_HANDLER
 #if defined(GUM_NO_EXCEPTIONS)
-#define GUM_ERROR_HANDLER(str, result) do { ::SDL_Log("%s", str.c_str()); return result; } while(0)
+#define GUM_ERROR_HANDLER(result) do { ::SDL_Log("%s", SDL_GetError()); SDL_ClearError(); return result; } while(0)
 #else
-#define GUM_ERROR_HANDLER(str, result) throw ::sdl::error(str)
+#define GUM_ERROR_HANDLER(result) throw ::sdl::error()
 #endif // GUM_NO_EXCEPTIONS
 #endif // GUM_ERROR_HANDLER
 } // sdl

@@ -43,15 +43,13 @@ inline void quit() noexcept {
 
 inline void init(uint32_t sdl = SDL_INIT_EVERYTHING, uint32_t img = GUM_IMG_DEF) {
     if(SDL_Init(sdl) < 0) {
-        auto&& err = last_error();
-        GUM_ERROR_HANDLER(err,);
+        GUM_ERROR_HANDLER();
     }
 
 #ifndef GUM_IMG_DISABLED
     auto img_result = IMG_Init(img);
     if((img_result & img) != img) {
-        auto&& err = last_img_error();
-        GUM_ERROR_HANDLER(err,);
+        GUM_ERROR_HANDLER();
     }
 #else
     (void)img;
