@@ -9,14 +9,7 @@ renderers, surfaces, and pixel related functions belong here.
 Contents:
 
 .. toctree::
+    :glob:
     :maxdepth: 1
 
-    video/colour
-    video/window
-    video/traits
-    video/texture
-    video/rect
-    video/display_mode
-    video/rectangle
-    video/point
-    video/line
+    video/*

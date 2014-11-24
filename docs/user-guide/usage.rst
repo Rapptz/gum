@@ -23,6 +23,8 @@ subdirectories that you'd need to access to get to the meat of the library. The 
 
 - :ref:`gum-core`
 - :ref:`gum-video`
+- :ref:`gum-input`
+- :ref:`gum-platform`
 
 Each module also contains a master file that includes the entire contents of the module. Some examples below.
 
@@ -31,8 +33,8 @@ Each module also contains a master file that includes the entire contents of the
     // includes all of 'core' module
     #include <gum/core.hpp>
 
-    // includes just the 'color' struct of the 'video' module
-    #include <gum/video/color.hpp>
+    // includes just the 'colour' struct of the 'video' module
+    #include <gum/video/colour.hpp>
 
     // includes just 'init' of the 'core' module
     #include <gum/core/init.hpp>

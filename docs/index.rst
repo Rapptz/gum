@@ -6,8 +6,8 @@ use C++11 interface. Note that this wrapper is a very thin wrapper. There should
 performance between using the wrapper and the API calls directly. Documentation is an on-going thing, as is the actual
 interface.
 
-``gum`` is currently header only. So there's no build step. The only thing needed to build at the moment is just SDL2. Versions
-lower than SDL2 are not explicitly supported.
+``gum`` is currently header only. So there's no build step. The only thing needed to build at the moment is just SDL2 and
+possibly some external libraries. See :ref:`gum-required-libs` for more info. Versions lower than SDL2 are not supported.
 
 Users of the library are encouraged to read the user guide for questions they might have.
 

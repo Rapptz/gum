@@ -24,9 +24,6 @@
 #include <SDL_error.h>
 #include <SDL_log.h>
 #include <stdexcept>
-#ifndef GUM_IMG_DISABLED
-#include <SDL_image.h>
-#endif
 
 namespace sdl {
 inline std::string last_error() {

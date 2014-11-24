@@ -21,143 +21,118 @@
 #define GUM_VIDEO_TEXTURE_HPP
 
 #include <gum/core/error.hpp>
+#include <gum/video/colour.hpp>
 #include <SDL_render.h>
-#include <SDL_surface.h>
+#include <type_traits>
 #include <utility>
 
 namespace sdl {
+namespace detail {
+struct texture_deleter {
+    void operator()(SDL_Texture* texture) const noexcept {
+        if(texture != nullptr) {
+            SDL_DestroyTexture(texture);
+        }
+    }
+};
+
+struct has_renderer_impl {
+    template<typename T, typename U = decltype(std::declval<T&>().renderer())>
+    static std::is_same<U, SDL_Renderer*> test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+template<typename T>
+struct has_renderer : decltype(has_renderer_impl::test<T>(0)) {};
+
+struct renderer_trait {
+    template<typename T, typename std::enable_if<has_renderer<T>::value, int>::type = 0>
+    static SDL_Renderer* get(const T& t) {
+        return t.renderer();
+    }
+
+    template<typename T, typename std::enable_if<!has_renderer<T>::value, int>::type = 0>
+    static SDL_Renderer* get(const T& t) {
+        return t;
+    }
+};
+
+template<typename T>
+struct is_valid_renderer : std::integral_constant<bool, std::is_same<T, SDL_Renderer*>::value || has_renderer<T>::value> {};
+} // detail
+
 struct texture {
 private:
-    union {
-        SDL_Texture* tex;
-        SDL_Surface* sur;
-    } value;
-
-    enum class ptr : char {
-        none,
-        texture,
-        surface
-    } type = ptr::none;
+    std::unique_ptr<SDL_Texture, detail::texture_deleter> ptr;
 public:
     texture() = default;
-    explicit texture(const std::string& filename) {
-        load_file(filename);
+
+    template<typename Window>
+    texture(int width, int height, const Window& win, int access = SDL_TEXTUREACCESS_STATIC) {
+        create(width, height, win, access);
     }
 
     template<typename Window>
-    texture(const std::string& filename, const Window& w) {
-        load_file(filename);
-        hardware_accelerate(w);
-    }
-
-    texture(texture&& other) noexcept {
-        switch(other.type) {
-        case ptr::texture:
-            std::swap(value.tex, other.value.tex);
-            other.value.tex = nullptr;
-            break;
-        case ptr::surface:
-            std::swap(value.sur, other.value.sur);
-            other.value.sur = nullptr;
-            break;
-        default:
-            break;
-        }
-        type = other.type;
-    }
-
-    ~texture() {
-        clear();
-    }
-
-    texture& operator=(texture&& other) noexcept {
-        switch(other.type) {
-        case ptr::texture:
-            std::swap(value.tex, other.value.tex);
-            other.value.tex = nullptr;
-            break;
-        case ptr::surface:
-            std::swap(value.sur, other.value.sur);
-            other.value.sur = nullptr;
-            break;
-        default:
-            break;
-        }
-        type = other.type;
-        return *this;
-    }
-
-    void load_file(const std::string& filename) {
-        if(type == ptr::texture) {
-            SDL_DestroyTexture(value.tex);
-        }
-
-    #ifndef GUM_IMG_DISABLED
-        value.sur = IMG_Load(filename.c_str());
-    #else
-        value.sur = SDL_LoadBMP(filename.c_str());
-    #endif
-        if(value.sur == nullptr) {
-            GUM_ERROR_HANDLER();
-        }
-
-        type = ptr::surface;
+    texture(const std::string& filename, const Window& win) {
+        load_file(filename, win);
     }
 
     template<typename Window>
-    void hardware_accelerate(const Window& win) {
-        if(type != ptr::surface) {
-            return;
-        }
-
-        auto result = SDL_CreateTextureFromSurface(win.renderer(), value.sur);
-        if(result == nullptr) {
+    void create(int width, int height, const Window& win, int access = SDL_TEXTUREACCESS_STATIC) {
+        static_assert(detail::is_valid_renderer<Window>::value, "Type must either be an sdl::window or SDL_Renderer*");
+        ptr.reset(SDL_CreateTexture(detail::renderer_trait::get(win), SDL_PIXELFORMAT_RGBA8888, access, width, height));
+        if(ptr == nullptr) {
             GUM_ERROR_HANDLER();
         }
-        SDL_FreeSurface(value.sur);
-        value.tex = result;
-        type = ptr::texture;
     }
 
-    void clear() noexcept {
-        switch(type) {
-        case ptr::texture:
-            SDL_DestroyTexture(value.tex);
-            break;
-        case ptr::surface:
-            SDL_FreeSurface(value.sur);
-            break;
-        default:
-            break;
+    template<typename Window>
+    void load_file(const std::string& filename, const Window& win) {
+        static_assert(detail::is_valid_renderer<Window>::value, "Type must either be an sdl::window or SDL_Renderer*");
+        #ifndef GUM_DISABLED_IMG
+        auto* surface = IMG_Load(filename.c_str());
+        #else
+        auto* surface = SDL_LoadBMP(filename.c_str());
+        #endif
+
+        if(surface == nullptr) {
+            GUM_ERROR_HANDLER();
         }
-        type = ptr::none;
-    }
 
-    bool is_texture() const noexcept {
-        return type == ptr::texture;
-    }
+        ptr.reset(SDL_CreateTextureFromSurface(detail::renderer_trait::get(win), surface));
 
-    bool is_surface() const noexcept {
-        return type == ptr::surface;
-    }
-
-    explicit operator bool() const noexcept {
-        switch(type) {
-        case ptr::texture:
-            return value.tex != nullptr;
-        case ptr::surface:
-            return value.sur != nullptr;
-        default:
-            return false;
+        if(ptr == nullptr) {
+            GUM_ERROR_HANDLER();
         }
     }
 
     SDL_Texture* data() const noexcept {
-        return value.tex;
+        return ptr.get();
     }
 
-    SDL_Surface* surface() const noexcept {
-        return value.sur;
+    explicit operator bool() const noexcept {
+        return ptr.get() != nullptr;
+    }
+
+    sdl::colour colour() const {
+        sdl::colour result;
+        if(SDL_GetTextureColorMod(ptr.get(), &result.r, &result.g, &result.b) != 0) {
+            GUM_ERROR_HANDLER();
+        }
+        if(SDL_GetTextureAlphaMod(ptr.get(), &result.a) != 0) {
+            GUM_ERROR_HANDLER();
+        }
+        return result;
+    }
+
+    void colour(const sdl::colour& c) {
+        if(SDL_SetTextureColorMod(ptr.get(), c.r, c.g, c.b) != 0) {
+            GUM_ERROR_HANDLER();
+        }
+        if(SDL_SetTextureAlphaMod(ptr.get(), c.a) != 0) {
+            GUM_ERROR_HANDLER();
+        }
     }
 };
 } // sdl

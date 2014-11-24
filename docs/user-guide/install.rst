@@ -18,13 +18,13 @@ Required Libraries
 are not provided by the user, you can retroactively disable them through the use of preprocessor macros. Make sure to
 define these macros before including the file or they won't work.
 
-+------------+------------------+
-|  Library   | Macro to disable |
-+------------+------------------+
-| SDL2       | None. Obviously. |
-+------------+------------------+
-| SDL2_image | GUM_IMG_DISABLED |
-+------------+------------------+
++------------+------------------+-------------------------------+
+|  Library   | Macro to disable |         Included file         |
++------------+------------------+-------------------------------+
+| SDL2       | None. Obviously. | See :ref:`gum-include-layout` |
++------------+------------------+-------------------------------+
+| SDL2_image | GUM_IMG_DISABLED | \<SDL_image.h\>               |
++------------+------------------+-------------------------------+
 
 Note that by using these preprocessor macros then certain parts will obviously not work (e.g. .png loading).
 
