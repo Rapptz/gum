@@ -28,7 +28,6 @@ The following functions have been remapped:
 
 .. function:: bool has_3dnow() noexcept
               bool has_avx() noexcept
-              bool has_avx2() noexcept
               bool has_altivec() noexcept
               bool has_mmx() noexcept
               bool has_rdtsc() noexcept

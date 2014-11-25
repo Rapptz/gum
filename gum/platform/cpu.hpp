@@ -31,10 +31,6 @@ inline bool has_avx() noexcept {
     return SDL_HasAVX() == SDL_TRUE;
 }
 
-inline bool has_avx2() noexcept {
-    return SDL_HasAVX2() == SDL_TRUE;
-}
-
 inline bool has_altivec() noexcept {
     return SDL_HasAltiVec() == SDL_TRUE;
 }
@@ -68,7 +64,7 @@ inline bool has_sse42() noexcept {
 }
 
 inline int system_ram() noexcept {
-    return SDL_GetSystemRam();
+    return SDL_GetSystemRAM();
 }
 
 inline int logical_cpu_cores() noexcept {
