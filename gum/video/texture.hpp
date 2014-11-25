@@ -115,6 +115,14 @@ public:
         return ptr.get() != nullptr;
     }
 
+    SDL_Point size() const {
+        SDL_Point result;
+        if(SDL_QueryTexture(ptr.get(), nullptr, nullptr, &result.x, &result.y) != 0) {
+            GUM_ERROR_HANDLER();
+        }
+        return result;
+    }
+
     sdl::colour colour() const {
         sdl::colour result;
         if(SDL_GetTextureColorMod(ptr.get(), &result.r, &result.g, &result.b) != 0) {

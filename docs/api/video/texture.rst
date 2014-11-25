@@ -21,7 +21,7 @@ renderer to be passed around for creation.
 
 To fix this issue, ``gum`` separates both :sdl:`Surface` and :sdl:`Texture` into two different classes, :class:`texture`
 and :class:`surface` which have their own member functions that are similar to the API provided by SDL2. However, instead of
-directly using a :class:`surface` as a middle man, member functions are provided to help alleviate the usage of :sdl:`surface`
+directly using a :class:`surface` as a middle man, member functions are provided to help alleviate the usage of :sdl:`Surface`
 to its specialised domain such as :func:`texture::load_file`.
 
 .. note::
@@ -58,6 +58,11 @@ This file can be included through::
         This surface is then transformed into a texture through the use of :sdl:`CreateTextureFromSurface`. If the image
         could not be loaded or the surface cannot be transformed into a texture then the error handler is called.
         See |error| for more information.
+    .. function:: SDL_Point size() const
+
+        Returns the size of the texture. The ``x`` value represents the width of the texture, while the
+        ``y`` value represents the height of the texture. If an error happens (i.e. :sdl:`QueryTexture` failed) then
+        the error handler is called. See |error| for more information.
     .. function:: SDL_Texture* data() const noexcept
 
         Returns a pointer to the internal :sdl:`Texture`.
@@ -73,7 +78,6 @@ This file can be included through::
         Checks if the texture is valid, i.e. the internal texture is not ``nullptr``. This
         should rarely be called in practice since the error handler is called when one of the
         functions creating a texture returns ``nullptr``.
-
     .. function:: sdl::colour colour() const
                   void colour(const sdl::colour& c)
 
