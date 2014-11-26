@@ -27,8 +27,9 @@
 #include <gum/video/display_mode.hpp>
 #include <gum/video/rectangle.hpp>
 #include <gum/video/point.hpp>
+#include <gum/video/line.hpp>
 #include <gum/video/texture.hpp>
 #include <gum/video/surface.hpp>
-#include <gum/video/line.hpp>
+#include <gum/video/sprite.hpp>
 
 #endif // GUM_VIDEO_HPP
