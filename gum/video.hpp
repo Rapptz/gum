@@ -31,5 +31,6 @@
 #include <gum/video/texture.hpp>
 #include <gum/video/surface.hpp>
 #include <gum/video/sprite.hpp>
+#include <gum/video/message_box.hpp>
 
 #endif // GUM_VIDEO_HPP
