@@ -1,3 +1,4 @@
+
 // gum
 // Copyright (C) 2014 Rapptz
 // This software is provided 'as-is', without any express or implied
@@ -96,10 +97,10 @@ public:
         return ptr.get();
     }
 
-    std::string name() const noexcept {
+    std::string name() const {
         const char* result = SDL_JoystickName(ptr.get());
         if(result == nullptr) {
-            return "";
+            return "Unknown";
         }
         return { result };
     }

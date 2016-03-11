@@ -77,9 +77,9 @@ Some renames have been provided for consistency.
 
         Checks if a button is currently pressed. The button index should be less than the value returned by
         :func:`joystick::buttons`.
-    .. function:: std::string name() const noexcept
+    .. function:: std::string name() const
 
-        Returns the name of the joystick. If the name cannot be found, returns an empty string.
+        Returns the name of the joystick. If the name cannot be found, returns the string ``"Unknown"``.
     .. function:: int axes() const
 
         Returns the number of axes available by the joystick. If an error occurs, the error handler is called.

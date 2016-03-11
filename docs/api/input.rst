@@ -15,3 +15,4 @@ Contents:
     input/keyboard
     input/mouse
     input/joystick
+    input/controller

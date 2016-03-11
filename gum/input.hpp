@@ -24,5 +24,6 @@
 #include <gum/input/event.hpp>
 #include <gum/input/keyboard.hpp>
 #include <gum/input/joystick.hpp>
+#include <gum/input/controller.hpp>
 
 #endif // GUM_INPUT_HPP
