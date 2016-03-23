@@ -21,7 +21,7 @@
 #define GUM_VIDEO_WINDOW_HPP
 
 #include <gum/core/error.hpp>
-#include <gum/video/traits.hpp>
+#include <gum/detail/type_traits.hpp>
 #include <gum/video/vector.hpp>
 #include <gum/video/colour.hpp>
 #include <memory>

@@ -1,5 +1,5 @@
 // gum
-// Copyright (C) 2014 Rapptz
+// Copyright (C) 2014-2016 Rapptz
 
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -17,8 +17,8 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#ifndef GUM_VIDEO_TRAITS_HPP
-#define GUM_VIDEO_TRAITS_HPP
+#ifndef GUM_DETAIL_TYPE_TRAITS_HPP
+#define GUM_DETAIL_TYPE_TRAITS_HPP
 
 #include <type_traits>
 #include <utility>
@@ -40,4 +40,4 @@ template<typename Drawable>
 struct is_renderer_drawable : decltype(detail::is_renderer_drawable_impl::test<Drawable>(0)) {};
 } // sdl
 
-#endif // GUM_VIDEO_TRAITS_HPP
+#endif // GUM_DETAIL_TYPE_TRAITS_HPP
