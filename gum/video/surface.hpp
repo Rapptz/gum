@@ -32,9 +32,7 @@ namespace sdl {
 namespace detail {
 struct surface_deleter {
     void operator()(SDL_Surface* surface) const noexcept {
-        if(surface != nullptr) {
-            SDL_FreeSurface(surface);
-        }
+        SDL_FreeSurface(surface);
     }
 };
 

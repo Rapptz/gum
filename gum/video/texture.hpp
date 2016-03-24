@@ -30,9 +30,7 @@ namespace sdl {
 namespace detail {
 struct texture_deleter {
     void operator()(SDL_Texture* texture) const noexcept {
-        if(texture != nullptr) {
-            SDL_DestroyTexture(texture);
-        }
+        SDL_DestroyTexture(texture);
     }
 };
 

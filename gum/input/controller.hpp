@@ -31,7 +31,6 @@ struct controller_deleter {
     void operator()(SDL_GameController* controller) const noexcept {
         if(SDL_GameControllerGetAttached(controller) == SDL_TRUE) {
             SDL_GameControllerClose(controller);
-            controller = nullptr;
         }
     }
 };

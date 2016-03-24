@@ -34,19 +34,13 @@
 namespace sdl {
 struct window_deleter {
     void operator()(SDL_Window* window) const noexcept {
-        if(window != nullptr) {
-            SDL_DestroyWindow(window);
-            window = nullptr;
-        }
+        SDL_DestroyWindow(window);
     }
 };
 
 struct renderer_deleter {
     void operator()(SDL_Renderer* renderer) const noexcept {
-        if(renderer != nullptr) {
-            SDL_DestroyRenderer(renderer);
-            renderer = nullptr;
-        }
+        SDL_DestroyRenderer(renderer);
     }
 };
 
