@@ -283,7 +283,7 @@ inline std::string to_string(int32_t key_code) noexcept {
 
 inline bool is_pressed(int32_t key_code) noexcept {
     const auto* data = SDL_GetKeyboardState(nullptr);
-    return data[SDL_GetScancodeFromKey(key_code)];
+    return data[SDL_GetScancodeFromKey(key_code)] != 0;
 }
 } // key
 
@@ -569,7 +569,7 @@ inline std::string to_string(int32_t scan_code) noexcept {
 
 inline bool is_pressed(int32_t scan_code) noexcept {
     const auto* data = SDL_GetKeyboardState(nullptr);
-    return data[scan_code];
+    return data[scan_code] != 0;
 }
 } // scan
 

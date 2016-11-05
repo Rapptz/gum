@@ -28,11 +28,11 @@ struct rect : public SDL_Rect {
     constexpr rect(int x, int y, int w, int h) noexcept: SDL_Rect{x, y, w, h} {}
 
     bool intersects(const rect& other) const noexcept {
-        return SDL_HasIntersection(this, &other);
+        return SDL_HasIntersection(this, &other) != SDL_FALSE;
     }
 
     bool empty() const noexcept {
-        return SDL_RectEmpty(this);
+        return SDL_RectEmpty(this) != SDL_FALSE;
     }
 
     rect union_with(const rect& other) const noexcept {

@@ -77,7 +77,7 @@ public:
     }
 
     bool is_attached() const noexcept {
-        return SDL_JoystickGetAttached(ptr.get());
+        return SDL_JoystickGetAttached(ptr.get()) != SDL_FALSE;
     }
 
     int16_t axis(int i) const {
@@ -89,7 +89,7 @@ public:
     }
 
     bool is_pressed(int button) const noexcept {
-        return SDL_JoystickGetButton(ptr.get(), button);
+        return SDL_JoystickGetButton(ptr.get(), button) != 0;
     }
 
     SDL_Joystick* data() const noexcept {

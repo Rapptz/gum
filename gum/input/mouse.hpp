@@ -34,7 +34,7 @@ enum button : char {
 };
 
 inline bool is_button_pressed(button b) noexcept {
-    return SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(static_cast<char>(b));
+    return (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(static_cast<char>(b))) != 0;
 }
 
 inline vector position() noexcept {

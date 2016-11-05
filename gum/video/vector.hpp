@@ -41,7 +41,7 @@ struct vector : SDL_Point {
     }
 
     void normalise() {
-        int len = length();
+        int len = static_cast<int>(length());
         if(len != 0 && len != 1) {
             x /= len;
             y /= len;

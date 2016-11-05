@@ -133,7 +133,7 @@ inline void clear_range(uint32_t min, uint32_t max) noexcept {
 }
 
 inline bool has(uint32_t type) noexcept {
-    return SDL_HasEvent(type);
+    return SDL_HasEvent(type) != SDL_FALSE;
 }
 
 template<typename... Rest>
@@ -142,7 +142,7 @@ inline bool has(uint32_t type, Rest... rest) noexcept {
 }
 
 inline bool has_range(uint32_t min, uint32_t max) noexcept {
-    return SDL_HasEvents(min, max);
+    return SDL_HasEvents(min, max) != SDL_FALSE;
 }
 
 inline void pump() noexcept {
@@ -151,15 +151,15 @@ inline void pump() noexcept {
 } // event_queue
 
 inline bool poll_event(event& e) noexcept {
-    return SDL_PollEvent(&e);
+    return SDL_PollEvent(&e) != 0;
 }
 
 inline bool wait_event(event& e) noexcept {
-    return SDL_WaitEvent(&e);
+    return SDL_WaitEvent(&e) != 0;
 }
 
 inline bool wait_event_for(event& e, int ms) noexcept {
-    return SDL_WaitEventTimeout(&e, ms);
+    return SDL_WaitEventTimeout(&e, ms) != 0;
 }
 
 template<typename Rep, typename Period>

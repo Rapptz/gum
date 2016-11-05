@@ -150,7 +150,7 @@ public:
     }
 
     bool is_input_grabbed() const noexcept {
-        return SDL_GetWindowGrab(ptr.get());
+        return SDL_GetWindowGrab(ptr.get()) != SDL_FALSE;
     }
 
     void maximum_size(int width, int height) noexcept {
