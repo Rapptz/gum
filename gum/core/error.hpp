@@ -40,9 +40,13 @@ public:
 
 #ifndef GUM_ERROR_HANDLER
 #if defined(GUM_NO_EXCEPTIONS)
-#define GUM_ERROR_HANDLER(result) do { ::SDL_Log("%s", SDL_GetError()); SDL_ClearError(); return result; } while(0)
+#define GUM_ERROR_HANDLER_NO_RET() do { ::SDL_Log("%s", SDL_GetError()); SDL_ClearError(); } while(0)
+#define GUM_ERROR_HANDLER_VOID() do { GUM_ERROR_HANDLER_NO_RET(); return; } while(0)
+#define GUM_ERROR_HANDLER(result) do { GUM_ERROR_HANDLER_NO_RET(); return result; } while(0)
 #else
-#define GUM_ERROR_HANDLER(result) throw ::sdl::error()
+#define GUM_ERROR_HANDLER_NO_RET() throw ::sdl::error()
+#define GUM_ERROR_HANDLER_VOID() GUM_ERROR_HANDLER_NO_RET()
+#define GUM_ERROR_HANDLER(result) GUM_ERROR_HANDLER_NO_RET()
 #endif // GUM_NO_EXCEPTIONS
 #endif // GUM_ERROR_HANDLER
 } // sdl

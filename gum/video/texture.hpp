@@ -83,7 +83,7 @@ public:
         static_assert(detail::is_valid_renderer<Window>::value, "Type must either be an sdl::window or SDL_Renderer*");
         ptr.reset(SDL_CreateTexture(detail::renderer_trait::get(win), SDL_PIXELFORMAT_RGBA8888, access, width, height));
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
@@ -97,13 +97,14 @@ public:
         #endif
 
         if(surface == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
 
         ptr.reset(SDL_CreateTextureFromSurface(detail::renderer_trait::get(win), surface));
+        SDL_FreeSurface(surface);
 
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
@@ -118,7 +119,7 @@ public:
     SDL_Point size() const {
         SDL_Point result;
         if(SDL_QueryTexture(ptr.get(), nullptr, nullptr, &result.x, &result.y) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         return result;
     }
@@ -126,20 +127,20 @@ public:
     sdl::colour colour() const {
         sdl::colour result;
         if(SDL_GetTextureColorMod(ptr.get(), &result.r, &result.g, &result.b) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         if(SDL_GetTextureAlphaMod(ptr.get(), &result.a) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         return result;
     }
 
     void colour(const sdl::colour& c) {
         if(SDL_SetTextureColorMod(ptr.get(), c.r, c.g, c.b) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         if(SDL_SetTextureAlphaMod(ptr.get(), c.a) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
     }
 };

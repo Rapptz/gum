@@ -85,15 +85,19 @@ public:
         window(title, display.w, display.h, flag) {}
 
     window(const std::string& title, int width, int height, uint32_t flag = 0):
-    ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
-        if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+        ptr(nullptr), render(nullptr) {
+        decltype(ptr) window_ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag));
+        if(window_ptr == nullptr) {
+            GUM_ERROR_HANDLER_VOID();
         }
-        render.reset(SDL_CreateRenderer(ptr.get(), -1, renderer::accelerated));
 
-        if(render == nullptr) {
-            GUM_ERROR_HANDLER();
+        decltype(render) render_ptr(SDL_CreateRenderer(window_ptr.get(), -1, renderer::accelerated));
+        if(render_ptr == nullptr) {
+            GUM_ERROR_HANDLER_VOID();
         }
+
+        ptr.swap(window_ptr);
+        render.swap(render_ptr);
     }
 
     bool is_open() const noexcept {
@@ -125,7 +129,7 @@ public:
 
     void brightness(float bright) {
         if(SDL_SetWindowBrightness(ptr.get(), bright)) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
@@ -247,7 +251,7 @@ public:
 
     void to_fullscreen(bool b = true) {
         if(SDL_SetWindowFullscreen(ptr.get(), b ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0)) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 

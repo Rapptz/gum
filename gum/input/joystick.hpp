@@ -72,7 +72,7 @@ public:
     joystick() noexcept = default;
     joystick(int index = 0): ptr(SDL_JoystickOpen(index)) {
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 

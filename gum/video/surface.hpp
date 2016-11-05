@@ -90,14 +90,14 @@ public:
         ptr.reset(SDL_LoadBMP(filename.c_str()));
     #endif
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
     void create(int width, int height, int depth = 32) {
         ptr.reset(SDL_CreateRGBSurface(0, width, height, depth, red, green, blue, alpha));
         if(ptr == nullptr) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
@@ -122,20 +122,20 @@ public:
     sdl::colour colour() const {
         sdl::colour result;
         if(SDL_GetSurfaceColorMod(ptr.get(), &result.r, &result.g, &result.b) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         if(SDL_GetSurfaceAlphaMod(ptr.get(), &result.a) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_NO_RET();
         }
         return result;
     }
 
     void colour(const sdl::colour& c) {
         if(SDL_SetSurfaceColorMod(ptr.get(), c.r, c.g, c.b) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
         if(SDL_SetSurfaceAlphaMod(ptr.get(), c.a) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 
@@ -154,7 +154,7 @@ public:
 
     void lock() {
         if(SDL_LockSurface(ptr.get()) != 0) {
-            GUM_ERROR_HANDLER();
+            GUM_ERROR_HANDLER_VOID();
         }
     }
 

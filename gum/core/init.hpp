@@ -41,21 +41,24 @@ inline void quit() noexcept {
 #define GUM_IMG_DEF 0
 #endif
 
-inline void init(uint32_t sdl = SDL_INIT_EVERYTHING, uint32_t img = GUM_IMG_DEF) {
-    if(SDL_Init(sdl) < 0) {
-        GUM_ERROR_HANDLER();
+inline int init(uint32_t sdl = SDL_INIT_EVERYTHING, uint32_t img = GUM_IMG_DEF) {
+    auto result = SDL_Init(sdl);
+    if(result < 0) {
+        GUM_ERROR_HANDLER(result);
     }
 
 #ifndef GUM_IMG_DISABLED
     auto img_result = IMG_Init(img);
     if((img_result & img) != img) {
-        GUM_ERROR_HANDLER();
+        // Doesn't set the error flag, also doesn't return an error code so follow SDL_Init's < 0 convention.
+        GUM_ERROR_HANDLER(-1);
     }
 #else
     (void)img;
 #endif
 
     std::atexit(::sdl::quit);
+    return 0;
 }
 } // sdl
 
