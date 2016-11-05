@@ -262,6 +262,11 @@ public:
     void display() noexcept {
         SDL_RenderPresent(render.get());
     }
+
+    void swap_window()
+    {
+        SDL_GL_SwapWindow(data());
+    }
 };
 } // sdl
 
