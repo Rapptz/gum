@@ -25,9 +25,6 @@
 #include <gum/video/vector.hpp>
 #include <gum/video/colour.hpp>
 #include <memory>
-#include <SDL_render.h>
-#include <SDL_video.h>
-#include <SDL_mouse.h>
 #include <string>
 #include <cstdint>
 

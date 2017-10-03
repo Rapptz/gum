@@ -24,7 +24,6 @@
 #include <gum/platform/endian.hpp>
 #include <gum/video/rect.hpp>
 #include <gum/video/colour.hpp>
-#include <SDL_surface.h>
 #include <cstdint>
 #include <memory>
 

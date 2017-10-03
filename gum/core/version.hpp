@@ -20,7 +20,7 @@
 #ifndef GUM_CORE_VERSION_HPP
 #define GUM_CORE_VERSION_HPP
 
-#include <SDL_version.h>
+#include <gum/core/config.hpp>
 #include <cstdint>
 
 namespace sdl {

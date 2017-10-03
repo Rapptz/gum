@@ -20,8 +20,8 @@
 #ifndef GUM_PLATFORM_NAME_HPP
 #define GUM_PLATFORM_NAME_HPP
 
+#include <gum/core/config.hpp>
 #include <string>
-#include <SDL_platform.h>
 
 namespace sdl {
 inline std::string platform() {

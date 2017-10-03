@@ -19,7 +19,6 @@
 #define GUM_INPUT_JOYSTICK_HPP
 
 #include <gum/core/error.hpp>
-#include <SDL_joystick.h>
 #include <cstdint>
 #include <string>
 #include <memory>

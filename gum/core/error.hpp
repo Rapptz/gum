@@ -21,8 +21,6 @@
 #define GUM_CORE_ERROR_HPP
 
 #include <gum/core/config.hpp>
-#include <SDL_error.h>
-#include <SDL_log.h>
 #include <stdexcept>
 
 namespace sdl {

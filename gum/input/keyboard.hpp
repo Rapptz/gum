@@ -20,11 +20,8 @@
 #ifndef GUM_INPUT_KEYBOARD_HPP
 #define GUM_INPUT_KEYBOARD_HPP
 
+#include <gum/core/config.hpp>
 #include <string>
-#include <SDL_keyboard.h>
-#include <SDL_keycode.h>
-#include <SDL_scancode.h>
-#include <SDL_rect.h>
 
 // SDL's keyboard input is fine, just like the event system.
 // Just wrap them up and provide some consistent renames.

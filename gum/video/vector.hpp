@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_VECTOR_HPP
 #define GUM_VIDEO_VECTOR_HPP
 
-#include <SDL_rect.h>
+#include <gum/core/config.hpp>
 #include <cmath>
 
 namespace sdl {

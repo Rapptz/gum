@@ -22,7 +22,6 @@
 
 #include <gum/core/error.hpp>
 #include <gum/video/colour.hpp>
-#include <SDL_render.h>
 #include <type_traits>
 #include <utility>
 
@@ -88,7 +87,7 @@ public:
     template<typename Window>
     void load_file(const std::string& filename, const Window& win) {
         static_assert(detail::is_valid_renderer<Window>::value, "Type must either be an sdl::window or SDL_Renderer*");
-        #ifndef GUM_DISABLED_IMG
+        #ifndef GUM_IMG_DISABLED
         auto* surface = IMG_Load(filename.c_str());
         #else
         auto* surface = SDL_LoadBMP(filename.c_str());

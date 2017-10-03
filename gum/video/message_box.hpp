@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_MESSAGE_BOX_HPP
 #define GUM_VIDEO_MESSAGE_BOX_HPP
 
-#include <SDL_video.h>
+#include <gum/core/config.hpp>
 #include <cstdint>
 #include <string>
 #include <vector>

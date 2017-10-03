@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_COLOUR_HPP
 #define GUM_VIDEO_COLOUR_HPP
 
-#include <SDL_pixels.h>
+#include <gum/core/config.hpp>
 #include <cstdint>
 
 namespace sdl {

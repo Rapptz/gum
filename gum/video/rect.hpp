@@ -20,7 +20,7 @@
 #ifndef GUM_VIDEO_RECT_HPP
 #define GUM_VIDEO_RECT_HPP
 
-#include <SDL_rect.h>
+#include <gum/core/config.hpp>
 
 namespace sdl {
 struct rect : public SDL_Rect {

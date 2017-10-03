@@ -20,9 +20,8 @@
 #ifndef GUM_VIDEO_POINT_HPP
 #define GUM_VIDEO_POINT_HPP
 
+#include <gum/core/config.hpp>
 #include <gum/video/colour.hpp>
-#include <SDL_rect.h>
-#include <SDL_render.h>
 
 namespace sdl {
 struct point : SDL_Point {

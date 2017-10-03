@@ -17,7 +17,7 @@
 #ifndef GUM_INPUT_EVENT_HPP
 #define GUM_INPUT_EVENT_HPP
 
-#include <SDL_events.h>
+#include <gum/core/config.hpp>
 #include <chrono>
 #include <cstdint>
 

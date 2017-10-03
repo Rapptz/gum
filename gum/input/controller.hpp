@@ -21,7 +21,6 @@
 #define GUM_INPUT_CONTROLLER_HPP
 
 #include <gum/core/error.hpp>
-#include <SDL_gamecontroller.h>
 #include <string>
 #include <memory>
 

@@ -26,4 +26,37 @@
 #   endif
 #endif // disable all
 
+/**
+ * We're going to over-zealously include the entirety of SDL so we don't
+ * have to deal with the different ways the file can be included or installed
+ * on different systems. Since we need to call SDL_Init anyway there's no actual
+ * penalty in compilation speeds.
+ */
+
+#if defined(__has_include)
+#   if __has_include(<SDL2/SDL.h>)
+#      include <SDL2/SDL.h>
+#   elif __has_include(<SDL/SDL.h>)
+#      include <SDL/SDL.h>
+#   elif __has_include(<SDL.h>)
+#      include <SDL.h>
+#   endif
+#else
+#   include <SDL.h>
+#endif
+
+#ifndef GUM_IMG_DISABLED
+#   if defined(__has_include)
+#      if __has_include(<SDL2/SDL_image.h>)
+#         include <SDL2/SDL_image.h>
+#      elif __has_include(<SDL/SDL_image.h>)
+#         include <SDL/SDL_image.h>
+#      elif __has_include(<SDL_image.h>)
+#         include <SDL_image.h>
+#      endif
+#   else
+#     include <SDL_image.h>
+#   endif
+#endif
+
 #endif // GUM_CORE_CONFIG_HPP

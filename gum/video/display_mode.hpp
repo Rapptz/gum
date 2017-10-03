@@ -21,7 +21,6 @@
 #define GUM_VIDEO_DISPLAY_MODE_HPP
 
 #include <gum/core/error.hpp>
-#include <SDL_video.h>
 #include <vector>
 
 namespace sdl {

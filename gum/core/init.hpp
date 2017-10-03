@@ -20,12 +20,9 @@
 #ifndef GUM_CORE_INIT_HPP
 #define GUM_CORE_INIT_HPP
 
+#include <gum/core/config.hpp>
 #include <gum/core/error.hpp>
 #include <cstdlib>
-#include <SDL.h>
-#ifndef GUM_IMG_DISABLED
-#include <SDL_image.h>
-#endif
 
 namespace sdl {
 inline void quit() noexcept {

@@ -20,7 +20,7 @@
 #ifndef GUM_PLATFORM_ENDIAN_HPP
 #define GUM_PLATFORM_ENDIAN_HPP
 
-#include <SDL_endian.h>
+#include <gum/core/config.hpp>
 #include <type_traits>
 
 namespace sdl {

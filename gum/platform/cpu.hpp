@@ -20,7 +20,7 @@
 #ifndef GUM_PLATFORM_CPU_HPP
 #define GUM_PLATFORM_CPU_HPP
 
-#include <SDL_cpuinfo.h>
+#include <gum/core/config.hpp>
 
 namespace sdl {
 inline bool has_3dnow() noexcept {
