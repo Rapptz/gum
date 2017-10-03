@@ -250,8 +250,7 @@ public:
         SDL_RenderPresent(render.get());
     }
 
-    void swap_window()
-    {
+    void swap_window() noexcept {
         SDL_GL_SwapWindow(data());
     }
 };
