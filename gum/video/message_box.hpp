@@ -64,7 +64,7 @@ public:
     }
 
     int show() noexcept {
-        data.numbuttons = static_cast<decltype(data.numbuttons)>(buttons.size());
+        data.numbuttons = buttons.size();
         data.buttons = buttons.data();
         data.colorScheme = &scheme;
         int button_id;

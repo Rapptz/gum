@@ -76,19 +76,15 @@ public:
         window(title, display.w, display.h, flag) {}
 
     window(const std::string& title, int width, int height, uint32_t flag = 0):
-        ptr(nullptr), render(nullptr) {
-        decltype(ptr) window_ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag));
-        if(window_ptr == nullptr) {
+        ptr(SDL_CreateWindow(title.c_str(), npos, npos, width, height, flag)) {
+        if(ptr == nullptr) {
             GUM_ERROR_HANDLER_VOID();
         }
 
-        decltype(render) render_ptr(SDL_CreateRenderer(window_ptr.get(), -1, renderer::accelerated));
-        if(render_ptr == nullptr) {
+        render.reset(SDL_CreateRenderer(ptr.get(), -1, renderer::accelerated));
+        if(render == nullptr) {
             GUM_ERROR_HANDLER_VOID();
         }
-
-        ptr.swap(window_ptr);
-        render.swap(render_ptr);
     }
 
     bool is_open() const noexcept {
