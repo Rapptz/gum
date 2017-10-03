@@ -44,18 +44,27 @@ struct context {
         int minor;
     };
 
-    explicit context(window& w) : gl_context(SDL_GL_CreateContext(w.data())) { }
-    ~context() { if (gl_context) SDL_GL_DeleteContext(gl_context); }
+    explicit context(window& w) noexcept: gl_context(SDL_GL_CreateContext(w.data())) {}
+
+    ~context() {
+        if(gl_context) {
+            SDL_GL_DeleteContext(gl_context);
+        }
+    }
 
     context(const context&) = delete;
-    context(const context&&) = delete;
+    context(context&&) = delete;
 
     context& operator=(const context&) = delete;
-    context& operator=(const context&&) = delete;
+    context& operator=(context&&) = delete;
 
-    int make_current(window& w) const { return SDL_GL_MakeCurrent(w.data(), gl_context); }
-    operator bool() const { return gl_context != nullptr; }
+    int make_current(window& w) const {
+        return SDL_GL_MakeCurrent(w.data(), gl_context);
+    }
 
+    explicit operator bool() const {
+        return gl_context != nullptr;
+    }
 private:
     SDL_GLContext gl_context;
 };
